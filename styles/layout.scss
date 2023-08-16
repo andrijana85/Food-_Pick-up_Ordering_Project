@@ -4,3 +4,70 @@ body,
 html {
   margin: 0;
 }
+
+$color_1: #6e726e;
+$color_2: #e03c23;
+$font-family_1: "Lato", sans-serif;
+$font-family_2: "Zilla Slab", serif;
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: $font-family_1;
+  letter-spacing: 0px;
+  font-size: 16px;
+  color: $color_1;
+  font-weight: 400;
+  line-height: 27px;
+}
+.menu-block {
+  margin-bottom: 30px;
+}
+.menu-title {
+  border-bottom: 3px solid #e0e6e3;
+  margin-bottom: 36px;
+  padding-bottom: 10px;
+}
+.menu-content {
+  border-bottom: 1px solid #e0e6e3;
+  margin-bottom: 30px;
+}
+.dish-content {
+  margin-top: 12px;
+  margin-bottom: 40px;
+}
+.dish-meta {
+  font-size: 12px;
+  text-transform: uppercase;
+  display: block;
+  width: 210px;
+  line-height: 1.7;
+}
+.dish-title {
+  margin-bottom: 6px;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 500;
+  position: relative;
+}
+.dish-price {
+  position: initial;
+  // right: 16px;
+  // top: 0px;
+  font-size: 22px;
+  color: $color_2;
+  font-weight: 500;
+  font-family: $font-family_2;
+}
+.well-block {
+  .dish-meta {
+    width: 100%;
+  }
+  .dish-price {
+    font-size: 26px;
+    color: $color_2;
+    font-weight: 500;
+    font-family: $font-family_2;
+    position: inherit;
+  }
+}

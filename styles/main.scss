@@ -1,18 +1,85 @@
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+// body {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   min-height: 100vh;
 
-  background: rgb(163, 208, 219);
-  background: linear-gradient(
-    227deg,
-    rgba(163, 208, 219, 1) 0%,
-    rgba(163, 176, 219, 1) 20%,
-    rgba(163, 173, 219, 1) 34%,
-    rgba(163, 219, 208, 1) 59%,
-    rgba(163, 208, 219, 1) 74%,
-    rgba(163, 208, 219, 1) 100%
-  );
+//   background: rgb(163, 208, 219);
+//   background: linear-gradient(
+//     227deg,
+//     rgba(163, 208, 219, 1) 0%,
+//     rgba(163, 176, 219, 1) 20%,
+//     rgba(163, 173, 219, 1) 34%,
+//     rgba(163, 219, 208, 1) 59%,
+//     rgba(163, 208, 219, 1) 74%,
+//     rgba(163, 208, 219, 1) 100%
+//   );
+// }
+
+$color_1: #6e726e;
+$color_2: #e03c23;
+$font-family_1: "Lato", sans-serif;
+$font-family_2: "Zilla Slab", serif;
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: $font-family_1;
+  letter-spacing: 0px;
+  font-size: 16px;
+  color: $color_1;
+  font-weight: 400;
+  line-height: 27px;
+}
+.menu-block {
+  margin-bottom: 30px;
+}
+.menu-title {
+  border-bottom: 3px solid #e0e6e3;
+  margin-bottom: 36px;
+  padding-bottom: 10px;
+}
+.menu-content {
+  border-bottom: 1px solid #e0e6e3;
+  margin-bottom: 30px;
+}
+.dish-content {
+  margin-top: 12px;
+  margin-bottom: 40px;
+}
+.dish-meta {
+  font-size: 12px;
+  text-transform: uppercase;
+  display: block;
+  width: 210px;
+  line-height: 1.7;
+}
+.dish-title {
+  margin-bottom: 6px;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 500;
+  position: relative;
+}
+.dish-price {
+  position: absolute;
+  right: 16px;
+  top: 0px;
+  font-size: 26px;
+  color: $color_2;
+  font-weight: 500;
+  font-family: $font-family_2;
+}
+.well-block {
+  .dish-meta {
+    width: 100%;
+  }
+  .dish-price {
+    font-size: 26px;
+    color: $color_2;
+    font-weight: 500;
+    font-family: $font-family_2;
+    position: inherit;
+  }
 }
