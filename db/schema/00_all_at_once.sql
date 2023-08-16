@@ -70,3 +70,5 @@ CREATE TABLE payments (
   date DATE,
   method TEXT NOT NULL
 );
+
+-- comment
