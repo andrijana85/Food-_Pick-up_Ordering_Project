@@ -4,9 +4,9 @@
 <head>
   <title>Business List</title>
 
-  <meta charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
@@ -16,15 +16,20 @@
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/business.js"></script>
 </head>
-<body>  
+
+<body>
   <h1> List of restaurants</h1>
-  <ul>  
-    <% businesses.forEach(business => { %>
-<li>
-  <h2><%= business.name %></h2>
-  <p><%= business.description %></p>
-  <a href="/business/<%= business.id %>"> View Details</a>
-</li>
-    <%})%>
+  <ul>
+    <% businesses.forEach(business=> { %>
+      <li>
+        <h2>
+          <%= business.name %>
+        </h2>
+        <p>
+          <%= business.description %>
+        </p>
+        <a href="/business/<%= business.id %>"> View Details</a>
+      </li>
+      <%})%>
   </ul>
 </body>
