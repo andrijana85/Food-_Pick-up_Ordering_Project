@@ -1,12 +1,12 @@
 const express = require('express');
 const router  = express.Router();
-const db = require('../db/connection');
+const db = require('../db/queries/users');
 
 
-router.get('/business', (req, res) => {
+router.get('/', (req, res) => {
   db.getBusinesses()
     .then(businesses => {
-      res.render('busines-list', {businesses});
+      res.render('business-list', {businesses});
     })
     .catch(error => {
       console.log(error.message);
@@ -14,7 +14,7 @@ router.get('/business', (req, res) => {
     });
 });
 
-router.get('/business/:id', (req, res) => {
+router.get(':id', (req, res) => {
   res.render('business');
 });
 
