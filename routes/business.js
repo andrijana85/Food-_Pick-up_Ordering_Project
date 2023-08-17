@@ -29,8 +29,4 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.get('/:id', (req, res) => {
-  res.render('business');
-});
-
 module.exports = router;
