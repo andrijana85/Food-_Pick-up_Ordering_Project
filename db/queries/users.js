@@ -1,3 +1,12 @@
+const { Pool } = require('pg');
+
+const pool = new Pool({
+  user: 'labber',
+  password: '123',
+  host: 'localhost',
+  database: 'midterm'
+});
+
 const db = require('../connection');
 
 const getUsers = () => {
@@ -7,4 +16,13 @@ const getUsers = () => {
     });
 };
 
+
+const getRestaurants = () => {
+  return db.query('SELECT * FROM business')
+  .then(data => {
+    return data.rows;
+  });
+};
+
 module.exports = { getUsers };
+module.exports = { getRestaurants };
