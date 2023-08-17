@@ -1,25 +1,7 @@
 const db = require('../connection');
 
 
-const getBusinesses = () =>{
-  return db.query('SELECT * FROM business;')
-    .then(data => {
-      return data.rows;
-    })
-    .catch(error => {
-      console.log(error.message);
-    });
-};
-const getBusinessesById = (id) =>{
-  return db.query('SELECT * FROM business WHERE id = $1',[id])
-    .then(data => {
-      return data.rows[0];
-    })
-    .catch(error => {
-      console.log(error.message);
-      throw error;
-    });
-};
+
 
 const getFoodItems = function(id) {
   return db.query(`SELECT * FROM items WHERE id = $1`, [id])
@@ -39,6 +21,7 @@ const getUsers = () => {
     });
 };
 
+<<<<<<< HEAD
 const getOrders = () => {
   return db.query('SELECT * FROM orders;')
     .then(data => {
@@ -47,3 +30,6 @@ const getOrders = () => {
 };
 
 module.exports = { getUsers , getBusinesses, getFoodItems, getBusinessesById, getOrders};
+=======
+module.exports = { getUsers , getFoodItems };
+>>>>>>> 01a295e76e09d3cc7e3e8c4b208de412624fa6de
