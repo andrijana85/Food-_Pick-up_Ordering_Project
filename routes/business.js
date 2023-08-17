@@ -38,14 +38,24 @@ router.get('/', (req, res) => {
       res.status(500).send('Server Error');
     });
 });
-
-router.get(':id', (req, res) => {
-<<<<<<< HEAD
 router.get('/:id', (req, res) => {
-=======
-router.get('/business/:id', (req, res) => {
->>>>>>> 681c4f3 ( add user-stories file)
-      res.render('business');
+  const businessId = req.params.id;
+  db.getBusinessesById(businessId)
+    .then(business => {
+      if (!business) {
+        res.status(404).send('Business is not found');
+      } else {
+        res.render('business-details', {business});
+      }
+    })
+    .catch(error => {
+      console.log(error.message);
+      res.status(500).send('Server Error');
     });
+});
+
+router.get('/:id', (req, res) => {
+  res.render('business');
+});
 
   module.exports = router;

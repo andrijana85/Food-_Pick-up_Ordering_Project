@@ -1,11 +1,7 @@
 const db = require('../connection');
 
 
-<<<<<<< HEAD
-
-const getFoodItems = function (id) {
-=======
-const getBusinesses = () =>{
+const getBusinesses = () => {
   return db.query('SELECT * FROM business;')
     .then(data => {
       return data.rows;
@@ -14,9 +10,18 @@ const getBusinesses = () =>{
       console.log(error.message);
     });
 };
+const getBusinessesById = (id) => {
+  return db.query('SELECT * FROM business WHERE id = $1', [id])
+    .then(data => {
+      return data.rows[0];
+    })
+    .catch(error => {
+      console.log(error.message);
+      throw error;
+    });
+};
 
-const getFoodItems = function(id) {
->>>>>>> 681c4f3 ( add user-stories file)
+const getFoodItems = function (id) {
   return db.query(`SELECT * FROM items WHERE id = $1`, [id])
     .then((result) => {
       console.log(result.rows);
@@ -33,9 +38,4 @@ const getUsers = () => {
       return data.rows;
     });
 };
-
-<<<<<<< HEAD
-module.exports = { getUsers, getFoodItems };
-=======
-module.exports = { getUsers , getBusinesses, getFoodItems};
->>>>>>> 681c4f3 ( add user-stories file)
+module.exports = { getUsers, getBusinesses, getFoodItems, getBusinessesById };
