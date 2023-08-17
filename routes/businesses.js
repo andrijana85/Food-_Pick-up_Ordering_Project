@@ -29,8 +29,17 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.get('/:id', (req, res) => {
-  res.render('business');
+router.get('/:id/food_items', (req, res) => {
+  const businessId = req.params.id;
+  db.getFoodItemsByBusinessesId(businessId)
+    .then(foodItems => {
+      console.log(foodItems);
+      res.render('food-items-list', {foodItems, businessId});
+    })
+    .catch(error => {
+      console.log(error.message);
+      res.status(500).send('Server Error');
+    });
 });
 
 module.exports = router;

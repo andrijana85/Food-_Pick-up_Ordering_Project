@@ -1,3 +1,4 @@
+const { query } = require('express');
 const db = require('../connection');
 
 const getBusinesses = () =>{
@@ -19,5 +20,14 @@ const getBusinessesById = (id) =>{
       throw error;
     });
 };
-
-module.exports = { getBusinesses, getBusinessesById };
+const getFoodItemsByBusinessesId = (businessId) =>{
+  return db.query('SELECT * FROM food_items WHERE business_id = $1',[businessId])
+    .then(data => {
+      return data.rows;
+    })
+    .catch(error => {
+      console.log(error.message);
+      throw error;
+    });
+};
+module.exports = { getBusinesses, getBusinessesById, getFoodItemsByBusinessesId };
