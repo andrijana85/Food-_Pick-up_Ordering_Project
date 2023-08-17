@@ -39,4 +39,11 @@ const getUsers = () => {
     });
 };
 
-module.exports = { getUsers , getBusinesses, getFoodItems, getBusinessesById};
+const getOrders = () => {
+  return db.query('SELECT * FROM orders;')
+    .then(data => {
+      return data.rows;
+    });
+};
+
+module.exports = { getUsers , getBusinesses, getFoodItems, getBusinessesById, getOrders};
