@@ -29,6 +29,7 @@ GET /orders/:id
 
 POST /orders
 POST /orders/:id/edit
+# POST /orders/:id/delete
 
 <<<<<<< HEAD
 # POST /orders/:id/delete

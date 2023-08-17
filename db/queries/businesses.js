@@ -1,7 +1,6 @@
-const { query } = require('express');
 const db = require('../connection');
 
-const getBusinesses = () =>{
+const getBusinesses = () => {
   return db.query('SELECT * FROM business;')
     .then(data => {
       return data.rows;
@@ -10,8 +9,8 @@ const getBusinesses = () =>{
       console.log(error.message);
     });
 };
-const getBusinessesById = (id) =>{
-  return db.query('SELECT * FROM business WHERE id = $1',[id])
+const getBusinessesById = (id) => {
+  return db.query('SELECT * FROM business WHERE id = $1', [id])
     .then(data => {
       return data.rows[0];
     })
@@ -20,14 +19,5 @@ const getBusinessesById = (id) =>{
       throw error;
     });
 };
-const getFoodItemsByBusinessesId = (businessId) =>{
-  return db.query('SELECT * FROM food_items WHERE business_id = $1',[businessId])
-    .then(data => {
-      return data.rows;
-    })
-    .catch(error => {
-      console.log(error.message);
-      throw error;
-    });
-};
-module.exports = { getBusinesses, getBusinessesById, getFoodItemsByBusinessesId };
+
+module.exports = { getBusinesses, getBusinessesById };
