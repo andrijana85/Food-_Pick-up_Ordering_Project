@@ -30,4 +30,14 @@ const getFoodItemsByBusinessesId = (businessId) =>{
       throw error;
     });
 };
-module.exports = { getBusinesses, getBusinessesById, getFoodItemsByBusinessesId };
+const getAddressesByBusinessesId = (businessId) =>{
+  return db.query('SELECT * FROM business_addresses WHERE business_id = $1',[businessId])
+    .then(data => {
+      return data.rows;
+    })
+    .catch(error => {
+      console.log(error.message);
+      throw error;
+    });
+};
+module.exports = { getBusinesses, getBusinessesById, getFoodItemsByBusinessesId, getAddressesByBusinessesId };
