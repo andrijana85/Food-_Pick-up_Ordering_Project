@@ -1,3 +1,4 @@
+const { query } = require('express');
 const db = require('../connection');
 
 const getBusinesses = () => {

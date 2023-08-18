@@ -3,10 +3,14 @@
 GET /
 
 <<<<<<< HEAD
+
 # BUSINESS
+
 =======
-# BUSINESS 
->>>>>>> 681c4f3 ( add user-stories file)
+
+# BUSINESS
+
+> > > > > > > 681c4f3 ( add user-stories file)
 
 GET /business
 GET /business/:id
@@ -21,29 +25,37 @@ GET /business/:id/food_items
 =======
 GET /business/:id/foodItems
 
-# ORDER 
+# ORDER
 
 # GET /orders
->>>>>>> 681c4f3 ( add user-stories file)
-GET /orders/:id
+
+> > > > > > > 681c4f3 ( add user-stories file)
+> > > > > > > GET /orders/:id
 
 POST /orders
 POST /orders/:id/edit
+
 # POST /orders/:id/delete
 
 <<<<<<< HEAD
+
 # POST /orders/:id/delete
 
 =======
->>>>>>> 681c4f3 ( add user-stories file)
+
+> > > > > > > 681c4f3 ( add user-stories file)
+
 # Address
 
 GET /business/:id/address
 GET /business/:id/address/:id
 
 <<<<<<< HEAD
-#
-=======
-# 
 
->>>>>>> 681c4f3 ( add user-stories file)
+#
+
+=======
+
+#
+
+> > > > > > > 681c4f3 ( add user-stories file)

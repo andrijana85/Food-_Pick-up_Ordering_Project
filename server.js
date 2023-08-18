@@ -31,11 +31,8 @@ app.use(express.static('public'));
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
-<<<<<<< HEAD
+
 const businessRoutes = require('./routes/businesses');
-=======
-const businessRoutes = require('./routes/business');
->>>>>>> 681c4f3 ( add user-stories file)
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
