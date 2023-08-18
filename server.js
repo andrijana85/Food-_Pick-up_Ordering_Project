@@ -32,7 +32,7 @@ const userApiRoutes = require('./routes/users-api');
 const itemsApiRoutes = require('./routes/items-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
-const businessRoutes = require('./routes/business');
+const businessRoutes = require('./routes/businesses');
 const ordersRoutes = require('./routes/orders');
 
 // Mount all resource routes
