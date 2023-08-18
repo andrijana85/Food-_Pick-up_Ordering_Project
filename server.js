@@ -29,6 +29,7 @@ app.use(express.static('public'));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const userApiRoutes = require('./routes/users-api');
+const itemsApiRoutes = require('./routes/items-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const businessRoutes = require('./routes/businesses');
@@ -41,6 +42,7 @@ app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/businesses', businessRoutes);
+app.use('/api/items', itemsApiRoutes);
 
 // Note: mount other resources here, using the same pattern above
 
