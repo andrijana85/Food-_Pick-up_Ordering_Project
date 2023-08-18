@@ -2,25 +2,27 @@
 
 GET /
 
-# BUSINESS 
+# BUSINESS
 
 GET /business
 GET /business/:id
 
-GET /business/:id/foodItems
+GET /business/:id/food_items
 
-# ORDER 
+# ORDER
 
 # GET /orders
+
 GET /orders/:id
 
 POST /orders
 POST /orders/:id/edit
+
+# POST /orders/:id/delete
 
 # Address
 
 GET /business/:id/address
 GET /business/:id/address/:id
 
-# 
-
+#
