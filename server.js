@@ -41,7 +41,7 @@ app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/business', businessRoutes);
-app.use('/orders', ordersRoutes);
+app.use('/api/orders', ordersRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page

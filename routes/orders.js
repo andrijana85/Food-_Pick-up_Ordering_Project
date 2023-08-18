@@ -5,11 +5,11 @@ const db = require('../db/queries/orders');
 router.get('/', (req, res) => {
     db.getOrders()
       .then(orders => {
-        res.render('orders-list', {orders});
+        res.json(orders);
       })
       .catch(error => {
         console.log(error.message);
-        res.status(500).send('Server Error');
+        res.status(500).json({err:"internal error"});
       });
   });
 
