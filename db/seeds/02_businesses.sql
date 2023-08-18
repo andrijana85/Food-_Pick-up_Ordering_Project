@@ -2,5 +2,5 @@
 
 INSERT INTO businesses (id, name, description)
 VALUES
-    (1, 'Pizza Place', 'Authentic pizzas made with fresh ingredients'),
-    (2, 'Sushi Restaurant', 'Delicious sushi offerings with the finest fish');
+    (1, 'Little Caesars Pizza', 'Authentic pizzas made with fresh ingredients'),
+    (2, 'Kinkakuizakaya Sushi', 'Delicious sushi offerings with the finest fish');
