@@ -7,7 +7,7 @@ GET /
 GET /business
 GET /business/:id
 
-GET /business/:id/foodItems
+GET /business/:id/food_items
 
 # ORDER 
 
