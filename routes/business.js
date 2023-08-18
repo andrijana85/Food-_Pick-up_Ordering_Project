@@ -1,5 +1,6 @@
 const express = require('express');
 const router  = express.Router();
+<<<<<<< HEAD
 const db = require('../db/queries/users');
 
 
@@ -22,6 +23,15 @@ router.get('/:id', (req, res) => {
       } else {
         res.render('business-details', {business});
       }
+=======
+const db = require('../db/connection');
+
+
+router.get('/business', (req, res) => {
+  db.getBusinesses()
+    .then(businesses => {
+      res.render('busines-list', {businesses});
+>>>>>>> 681c4f3 ( add user-stories file)
     })
     .catch(error => {
       console.log(error.message);
@@ -29,7 +39,11 @@ router.get('/:id', (req, res) => {
     });
 });
 
+<<<<<<< HEAD
 router.get('/:id', (req, res) => {
+=======
+router.get('/business/:id', (req, res) => {
+>>>>>>> 681c4f3 ( add user-stories file)
   res.render('business');
 });
 

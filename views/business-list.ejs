@@ -4,9 +4,15 @@
 <head>
   <title>Business List</title>
 
+<<<<<<< HEAD
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+=======
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+>>>>>>> 681c4f3 ( add user-stories file)
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
@@ -16,6 +22,7 @@
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/business.js"></script>
 </head>
+<<<<<<< HEAD
 
 <body>
   <h1> List of restaurants</h1>
@@ -31,5 +38,17 @@
         <a href="/business/<%= business.id %>"> View Details</a>
       </li>
       <%})%>
+=======
+<body>  
+  <h1> List of restaurants</h1>
+  <ul>  
+    <% businesses.forEach(business => { %>
+<li>
+  <h2><%= business.name %></h2>
+  <p><%= business.description %></p>
+  <a href="/business/<%= business.id %>"> View Details</a>
+</li>
+    < %})%>
+>>>>>>> 681c4f3 ( add user-stories file)
   </ul>
 </body>
