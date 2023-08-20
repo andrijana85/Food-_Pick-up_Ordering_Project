@@ -1,5 +1,5 @@
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const db = require('../db/queries/orders');
 
 
@@ -7,12 +7,12 @@ const db = require('../db/queries/orders');
 router.post('/', (req, res) => {
   const ownerId = req.session.id;
   //createOrder
-  req.json({id:1234});
+  req.json({ id: 1234 });
   return;
-  
+
   db.createOrder(ownerId, req.body.order)
     .then(order => {
-      res.json({ order.id });
+      res.json({ order });
     })
     .catch(err => {
       res
