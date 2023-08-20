@@ -9,6 +9,20 @@ const morgan = require('morgan');
 const PORT = process.env.PORT || 8080;
 const app = express();
 
+const db = require('./db/connection');
+
+app.get('/', async (req, res) => {
+  try {
+    const result = await db.query('SELECT * FROM food_items'); // Fetch items from your database
+    const foodItems = result.rows; // Extract the rows from the result
+    res.render('index', { foodItems }); // Pass the fetched data to the template
+  } catch (error) {
+    console.error('Error fetching food items', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+
 app.set('view engine', 'ejs');
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -31,8 +45,9 @@ app.use(express.static('public'));
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
-const businessRoutes = require('./routes/business');
+const businessRoutes = require('./routes/businesses');
 const ordersRoutes = require('./routes/orders');
+const { getFoodItems } = require('./db/queries/users');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -40,7 +55,7 @@ const ordersRoutes = require('./routes/orders');
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
-app.use('/business', businessRoutes);
+app.use('/businesses', businessRoutes);
 app.use('/api/orders', ordersRoutes);
 // Note: mount other resources here, using the same pattern above
 
