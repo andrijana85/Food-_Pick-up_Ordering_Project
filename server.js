@@ -5,11 +5,13 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+const session = require('express-session');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
 
 app.set('view engine', 'ejs');
+app.use(express.json());
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -25,15 +27,18 @@ app.use(
   })
 );
 app.use(express.static('public'));
+app.use(session({ secret: 'dreamteamkey',resave: false,saveUninitialized: true}));
+
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const userApiRoutes = require('./routes/users-api');
-const itemsApiRoutes = require('./routes/items-api');
+const itemsApiRoutes = require('./routes/api-items');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
-const businessRoutes = require('./routes/businesses');
-const ordersRoutes = require('./routes/orders');
+const ordersApiRoutes = require('./routes/api-orders');
+
+// const session = require('express-session');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -41,9 +46,8 @@ const ordersRoutes = require('./routes/orders');
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
-app.use('/businesses', businessRoutes);
 app.use('/api/items', itemsApiRoutes);
-app.use('/api/orders', ordersRoutes);
+app.use('/api/orders', ordersApiRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page

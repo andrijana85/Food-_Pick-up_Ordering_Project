@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Business details</title>
+  <title>Menu Page</title>
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,26 +14,18 @@
   <link rel="stylesheet" href="/styles/layout.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/users.js"></script>
+  <script defer src="/scripts/index.js"></script>
 </head>
 
 <body>
-  <h1>business details</h1>
-  <% if (business) { %>
-    <h2>
-      <%= business.name %>
-    </h2>
-    <p><strong>Description:</strong>
-      <%= business.description %>
-    </p>
-    <p><strong>Location:</strong>
-      <%= business.location %>
-    </p>
-    <% } else { %>
-      <p>Business is not found.</p>
-      <% } %>
+  <div id="cart"></div>
+  <h1>Menu 🥔</h1>
+  <input id="item-input"/>
+  <input id="quantity-input"/>
+  <button type="button" id="testbutton">Add </button>
+  <button id="createOrderButton">Create Order</button>
+  <div id="items-container"></div>
 
-        <!-- Navigation links, buttons... -->
 </body>
 
 </html>

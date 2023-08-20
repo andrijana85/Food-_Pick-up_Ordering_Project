@@ -1,14 +1,9 @@
 -- Insert seed data
 
-INSERT INTO food_items (id, name, description, price, business_id)
+INSERT INTO food_items (id, name, description, price, image_url)
 VALUES
-    (1, 'Margherita', 'Classic tomato and mozzarella pizza', 9.99, 1),
-    (2, 'Pepperoni', 'Tomato, mozzarella, and pepperoni', 11.49, 1),
-    (3, 'Hawaiian', 'Ham, pineapple, and mozzarella', 12.99, 1),
-    (4, 'Vegetarian', 'Assorted vegetables and mozzarella', 10.99, 1),
-    (5, 'Meat Lovers', 'Pepperoni, sausage, bacon, and mozzarella', 13.99, 1),
-    (6, 'Sake Nigiri', 'Salmon on rice', 4.99, 2),
-    (7, 'Maguro Nigiri', 'Tuna on rice', 5.49, 2),
-    (8, 'Ebi Nigiri', 'Shrimp on rice', 4.79, 2),
-    (9, 'California Roll', 'Crab, avocado, and cucumber', 8.99, 2),
-    (10, 'Spicy Tuna Roll', 'Tuna, spicy mayo, and cucumber', 9.49, 2);
+    (1, 'Margherita', 'Classic tomato and mozzarella pizza', 9.99, 'https://www.slicepizzeria.com/wp-content/uploads/2021/01/Margherita-pizza-1.jpg'),
+    (2, 'Pepperoni', 'Tomato, mozzarella, and pepperoni', 11.49, 'https://cdn.tasteatlas.com/images/dishes/b05a0af72ad845f3a6abe16143d7853a.jpg?mw=1300'),
+    (3, 'Hawaiian', 'Ham, pineapple, and mozzarella', 12.99, 'https://previews.123rf.com/images/foodandmore/foodandmore1611/foodandmore161100049/65413036-oven-baked-delicious-italian-hawaiian-pizza-with-tropical-pineapple-and-ham-topping-on-mozzarella.jpg'),
+    (4, 'Vegetarian', 'Assorted vegetables and mozzarella', 10.99, 'https://c8.alamy.com/comp/PC093M/fresh-vegetarian-pizza-with-mozzarella-over-white-background-PC093M.jpg'),
+    (5, 'Meat Lovers', 'Pepperoni, sausage, bacon, and mozzarella', 13.99, 'https://www.pmq.com/wp-content/uploads/2019/04/rotm-meatlovers.jpg');
