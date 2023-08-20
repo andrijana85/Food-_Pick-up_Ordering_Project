@@ -1,8 +1,8 @@
 // This part shoud be in .env file for Security
 const twilioParams = {
-    authToken: ACf57c7c0561436df3daa1940325bf3281,
-    accountSid: ACf57c7c0561436df3daa1940325bf3281,
-    accountNumber: 13345083982
+    authToken: process.env.TWILIO_AUTH_TOKEN,
+    accountSid: process.env.TWILIO_ACCOUNT_SID,
+    accountNumber: process.env.TWILIO_ACCOUNT_NUMBER
 };
 
 const sendTextMessage = (message, to) => {
