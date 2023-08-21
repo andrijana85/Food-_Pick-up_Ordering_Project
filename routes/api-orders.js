@@ -5,14 +5,15 @@ const db = require('../db/queries/orders');
 
 //creates a new order
 router.post('/', (req, res) => {
-  const ownerId = req.session.id;
-  //createOrder
-  req.json({id:1234});
-  return;
+  // const ownerId = req.session.id;
+  const phoneNumber = req.body.phoneNumber;
+  const total = req.body.total;
+  const tax = req.body.tax;
   
-  db.createOrder(ownerId, req.body.order)
+  //createOrder
+  db.createOrder(phoneNumber, total, tax)
     .then(order => {
-      res.json({ order.id });
+      res.json({ order});
     })
     .catch(err => {
       res
@@ -23,10 +24,13 @@ router.post('/', (req, res) => {
 
 //modifies existing order (changes the status)
 router.post('/:id', (req, res) => {
-  const ownerId = req.session.id;
-  db.getOrders(ownerId)
-    .then(orders => {
-      res.json({ orders });
+  // const ownerId = req.session.id;
+  const orderId = req.params.id;
+  const newStatus = req.body.newStatus;
+
+  db.updateOrderStatus(orderId, newStatus)
+    .then(updatedOrder => {
+      res.json({ updatedOrder });
     })
     .catch(err => {
       res
@@ -35,7 +39,7 @@ router.post('/:id', (req, res) => {
     });
 });
 
-// this one might work
+// this one might work - DONE
 router.get('/', (req, res) => {
   const ownerId = req.session.userId;
   db.getOrders(ownerId)
