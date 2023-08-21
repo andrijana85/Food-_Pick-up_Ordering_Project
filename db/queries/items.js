@@ -1,7 +1,7 @@
 const db = require('../connection');
 
-//strech, take ownerId as parametar if we want to add more restaurants
-const loadItems = () => {
+
+const getFoodItems = () => {
   return db.query('SELECT * FROM food_items;')
     .then(data => {
       return data.rows;
@@ -11,11 +11,13 @@ const loadItems = () => {
     });
 };
 
-const getFoodItem = function(id) {
-  return db.query(`SELECT * FROM items WHERE id = $1;`, [id])
+//strech, take ownerId as parametar if we want to add more restaurants
+const getFoodItemsByOwner = function(ownerId) {
+  //we are not using ownerid now, maybe later
+  return db.query(`SELECT * FROM food_items`, [])
     .then((result) => {
       console.log(result.rows);
-      return result.rows[0];
+      return result.rows;
     })
     .catch((error) => {
       console.log(error.message);
@@ -51,4 +53,4 @@ const deleteItem = (itemId) => {
 };
 
 
-module.exports = { loadItems, addItem, deleteItem, getFoodItem};
+module.exports = { getFoodItems, addItem, deleteItem, getFoodItemsByOwner};

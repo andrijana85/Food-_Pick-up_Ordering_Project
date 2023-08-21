@@ -12,14 +12,11 @@ const getOrders = function(ownerId) {
     });
 };
 
-const createOrder = (order) => {
-  const queryParams = [order.phone_number,
-    order.total,
-    'pending',
-    order.tax];
+const createOrder = (phoneNumber, total) => {
+  const queryParams = [phoneNumber, total, 'pending'];
 
-  const queryStr = `INSERT INTO orders (phone_number, date, total, status, tax)
-    VALUES ($1, CURRENT_DATE, $2, $3, $4) RETURNING *`;
+  const queryStr = `INSERT INTO ordersitems (phone_number, date, total, status)
+    VALUES ($1, CURRENT_DATE, $2, $3, ) RETURNING *`;
   return db. query(queryStr, queryParams)
     .then(data => {
       return data.rows[0];

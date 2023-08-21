@@ -1,6 +1,6 @@
 -- Insert seed data
 
-INSERT INTO order_items (order_id, customer_id, food_item_id, quantity)
+INSERT INTO order_food_items (order_id, customer_id, food_item_id, quantity, total, status, tax)
 VALUES
     (1, 1, 1, 2),
     (1, 1, 3, 1),

@@ -8,13 +8,17 @@ const testdata = [
 
 const cart = [];
 // Client facing scripts here
-$(() => {
-  // alert("Ready");
-  $("#testbutton").on("click", addItem);
-  $("#items-container").on("click",".foodItem", addToCart);
-  loadItems();
+// $(() => {
+//   // alert("Ready");
+//   $("#testbutton").on("click", addItem);
+//   $("#items-container").on("click",".foodItem", addToCart);
+//   loadItems();
+// });
+$(document).ready(function() {
+  $('#orderNow').click(function() {
+    window.location.href = '/menu'; // Redirect to the /menu page
+  });
 });
-
 const addItem = function() {
   const name = $("#item-input").val();
   const quantity = $("#quantity-input").val();

@@ -34,10 +34,19 @@ router.get('/', (req, res) => {
 router.get('/menu/:id', (req, res) => {
   //check for user cookie and redirect to /order if exists
   if (req.session.userId) {
+    console.log("redirecting to orders");
     res.redirect('/orders');
     return;
   }
+  //save the menuId in the session
+  //this is the userId of the owner
+  //use this in future api calls
   res.render('menu');
+});
+
+router.get('/menu', (req, res) => {
+  //check for user cookie and redirect to /order if exists
+  res.redirect('/menu/1');
 });
 
 router.get('/orders', (req, res) => {

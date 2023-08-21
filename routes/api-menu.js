@@ -10,10 +10,10 @@ const router  = express.Router();
 const db = require('../db/queries/items');
 
 //test this route
-router.get('/:ownerId', (req, res) => {
+router.get('/', (req, res) => {
   //call the itemQueries.getItems(owner_id)
-  const ownerId = req.params.id;
-  db.getItems(ownerId)
+  const ownerId = req.session.ownerId || 1;
+  db.getFoodItemsByOwner(ownerId)
     .then(items => {
       res.json({ items });
     })
@@ -24,18 +24,7 @@ router.get('/:ownerId', (req, res) => {
     });
 });
 
-//done
-router.get('/', (req, res) => {
-  db.getItems()
-    .then(items => {
-      res.json({ items });
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-});
+
 
 
 module.exports = router;

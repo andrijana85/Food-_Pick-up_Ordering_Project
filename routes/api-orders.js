@@ -8,12 +8,17 @@ router.post('/', (req, res) => {
   // const ownerId = req.session.id;
   const phoneNumber = req.body.phoneNumber;
   const total = req.body.total;
-  const tax = req.body.tax;
   
+  const order = {
+    phoneNumber: phoneNumber,
+    total: total,
+    date: new Date().toISOString()
+  };
+
   //createOrder
-  db.createOrder(phoneNumber, total, tax)
-    .then(order => {
-      res.json({ order});
+  db.createOrder(order)
+    .then(createdOrder => {
+      res.json({ order: createdOrder});
     })
     .catch(err => {
       res
