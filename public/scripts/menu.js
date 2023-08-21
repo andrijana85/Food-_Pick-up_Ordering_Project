@@ -57,9 +57,9 @@ const addToCart = function() {
 
 
 const createCartElement = function(cartItem) {
-  const total = cartItem.count * cartItem.item.price;
+  const totalPrice = cartItem.count * cartItem.item.price;
   const element = $(`
-  <li class="foodItem">${cartItem.name} ${cartItem.count} @ ${cartItem.price} ${total}</li> 
+  <li class="foodItem">${cartItem.name} ${cartItem.count} @ ${cartItem.price} ${totalPrice}</li> 
   `);
   element.data("item", cartItem);
   return element;

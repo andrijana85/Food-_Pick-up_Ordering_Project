@@ -12,10 +12,10 @@ const getOrders = function(ownerId) {
     });
 };
 
-const createOrder = (phoneNumber, total) => {
-  const queryParams = [phoneNumber, total, 'pending'];
+const createOrder = (phoneNumber, totalPrice) => {
+  const queryParams = [phoneNumber, totalPrice, 'pending'];
 
-  const queryStr = `INSERT INTO ordersitems (phone_number, date, total, status)
+  const queryStr = `INSERT INTO orders (phone_number, date, totalPrice, status)
     VALUES ($1, CURRENT_DATE, $2, $3, ) RETURNING *`;
   return db. query(queryStr, queryParams)
     .then(data => {
