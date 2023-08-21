@@ -7,6 +7,6 @@ CREATE TABLE orders (
   -- customer_id INTEGER REFERENCES customers(id),
   phone_number TEXT,
   date DATE,
-  -- total NUMERIC (10, 2),
+  totalPrice NUMERIC (10, 2),
   status VARCHAR(255),
 );

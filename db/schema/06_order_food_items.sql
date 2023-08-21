@@ -7,7 +7,7 @@ CREATE TABLE order_food_items (
   order_id INTEGER,
   -- customer_id INT REFERENCES customers(id),
   food_item_id INT REFERENCES food_items(id),
-  -- quantity INT,
+  quantity INT,
   -- total NUMERIC (10, 2),
   status VARCHAR(255),
   -- tax NUMERIC (10, 2)
