@@ -1,18 +1,121 @@
-body {
+$image-path: "../images/pizza-time-tasty-homemade-traditional-pizza-italian-recipe.jpg";
+$green: #008c45;
+$red: #cd212a;
+$white: #d2d2d2;
+
+.menu-container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
   min-height: 100vh;
+  //   background: url("https://images.pexels.com/photos/3581878/pexels-photo-3581878.jpeg")
+  //     no-repeat center center / cover;
+  padding: 5rem;
+}
 
-  background: rgb(163, 208, 219);
-  background: linear-gradient(
-    227deg,
-    rgba(163, 208, 219, 1) 0%,
-    rgba(163, 176, 219, 1) 20%,
-    rgba(163, 173, 219, 1) 34%,
-    rgba(163, 219, 208, 1) 59%,
-    rgba(163, 208, 219, 1) 74%,
-    rgba(163, 208, 219, 1) 100%
-  );
+#cart {
+  background: red;
+}
+
+.motto {
+  width: 60%;
+  padding: 2rem;
+  //   align-items: ;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 2rem 0;
+  //   text-align: center;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.cta {
+  padding: 2rem;
+  width: 40%;
+}
+//BUTTON 2
+.second {
+  border-radius: 3em;
+  border-color: $green;
+  color: $white;
+  background: {
+    image: linear-gradient(
+      to right,
+      transparentize($white, 0.4),
+      transparentize($white, 0.4) 5%,
+      $white 5%,
+      $white 10%,
+      transparentize($white, 0.4) 10%,
+      transparentize($white, 0.4) 15%,
+      $white 15%,
+      $white 20%,
+      transparentize($white, 0.4) 20%,
+      transparentize($white, 0.4) 25%,
+      $white 25%,
+      $white 30%,
+      transparentize($white, 0.4) 30%,
+      transparentize($white, 0.4) 35%,
+      $white 35%,
+      $white 40%,
+      transparentize($white, 0.4) 40%,
+      transparentize($white, 0.4) 45%,
+      $white 45%,
+      $white 50%,
+      transparentize($white, 0.4) 50%,
+      transparentize($white, 0.4) 55%,
+      $white 55%,
+      $white 60%,
+      transparentize($white, 0.4) 60%,
+      transparentize($white, 0.4) 65%,
+      $white 65%,
+      $white 70%,
+      transparentize($white, 0.4) 70%,
+      transparentize($white, 0.4) 75%,
+      $white 75%,
+      $white 80%,
+      transparentize($white, 0.4) 80%,
+      transparentize($white, 0.4) 85%,
+      $white 85%,
+      $white 90%,
+      transparentize($white, 0.4) 90%,
+      transparentize($white, 0.4) 95%,
+      $white 95%,
+      $white 100%
+    );
+    position: 0 0;
+    size: 100%;
+  }
+  transition: background 300ms ease-in-out;
+
+  &:hover {
+    background-position: 100px;
+  }
+}
+.btn {
+  box-sizing: border-box;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid $green;
+  border-radius: 0.6em;
+  color: $green;
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 20px;
+  padding: 1.2em 2.8em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+
+  &:hover,
+  &:focus {
+    color: $red;
+    outline: 0;
+  }
 }
