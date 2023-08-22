@@ -6,6 +6,7 @@ const db = require('../db/queries/orders');
 //creates a new order
 router.post('/', (req, res) => {
   // const ownerId = req.session.id;
+  // const orderData = req.body.order;
   const phoneNumber = req.body.phoneNumber;
   const total = req.body.total;
   
@@ -46,7 +47,8 @@ router.post('/:id', (req, res) => {
 
 // this one might work - DONE
 router.get('/', (req, res) => {
-  const ownerId = req.session.userId;
+  // const ownerId = req.session.userId;
+  const ownerId = 1;
   db.getOrders(ownerId)
     .then(orders => {
       res.json({ orders });

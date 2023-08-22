@@ -15,6 +15,7 @@ const cart = [];
 //   loadItems();
 // });
 $(document).ready(function() {
+  alert("Ready");
   $('#orderNow').click(function() {
     window.location.href = '/menu'; // Redirect to the /menu page
   });

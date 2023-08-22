@@ -2,7 +2,7 @@ const db = require('../connection');
 
 
 const getOrders = function(ownerId) {
-  return db.query('SELECT * FROM orders WHERE owner_id = $1 ORDER BY date;', [ownerId])
+  return db.query('SELECT * FROM orders WHERE id = $1 ORDER BY date;', [ownerId])
     .then((result) => {
       console.log(result.rows);
       return result.rows;

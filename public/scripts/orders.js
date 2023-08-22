@@ -11,14 +11,7 @@ const loadMenu = () => {
     }
   });
 };
-const renderItems = function(items) {
-  const container = $("#items-container");
 
-  for (const item of items) {
-    const element = createItemElement(item);
-    container.append(element);
-  }
-};
 
 
 loadMenu();

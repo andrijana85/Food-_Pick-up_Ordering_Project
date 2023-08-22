@@ -11,7 +11,7 @@ const getFoodItems = () => {
     });
 };
 
-//strech, take ownerId as parametar if we want to add more restaurants
+//stretch, take ownerId as parametar if we want to add more restaurants
 const getFoodItemsByOwner = function(ownerId) {
   //we are not using ownerid now, maybe later
   return db.query(`SELECT * FROM food_items`, [])
