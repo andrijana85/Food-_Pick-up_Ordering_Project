@@ -20,7 +20,7 @@ const loadItems = function() {
   // TODO: Ajax get data
   $.get("/api/menu")
     .then(data => {
-      renderItems(data);
+      renderItems(data.items);
     });
 };
 
