@@ -20,11 +20,12 @@ const loadItems = function() {
   // TODO: Ajax get data
   $.get("/api/menu")
     .then(data => {
-      renderItems(data);
+      renderItems(data.items);
     });
 };
 
 const renderItems = function(items) {
+  console.log("items:", items);
   const container = $("#items-container");
 
   for (const item of items) {
