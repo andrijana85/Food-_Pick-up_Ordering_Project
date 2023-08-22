@@ -12,7 +12,7 @@ router.post('/', (req, res) => {
   
   db.createOrder(ownerId, req.body.order)
     .then(order => {
-      res.json({ order.id });
+      res.json({ order });
     })
     .catch(err => {
       res
