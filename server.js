@@ -32,22 +32,21 @@ app.use(session({ secret: 'dreamteamkey',resave: false,saveUninitialized: true})
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const userApiRoutes = require('./routes/users-api');
-const itemsApiRoutes = require('./routes/api-items');
-const widgetApiRoutes = require('./routes/widgets-api');
-const usersRoutes = require('./routes/users');
-const ordersApiRoutes = require('./routes/api-orders');
 
-// const session = require('express-session');
+const menuApiRoutes = require('./routes/api-menu');
+
+const ordersApiRoutes = require('./routes/api-orders');
+const pagesRoutes = require('./routes/pages');
+
+
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
-app.use('/api/users', userApiRoutes);
-app.use('/api/widgets', widgetApiRoutes);
-app.use('/users', usersRoutes);
-app.use('/api/items', itemsApiRoutes);
+
+app.use('/api/menu', menuApiRoutes);
 app.use('/api/orders', ordersApiRoutes);
+app.use('/', pagesRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page

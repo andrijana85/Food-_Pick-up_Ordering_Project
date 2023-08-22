@@ -1,4 +1,4 @@
-const cart = [];
+const cart = {};
 
 $(() => {
   // alert("Ready");
@@ -18,9 +18,9 @@ const addItem = function() {
 
 const loadItems = function() {
   // TODO: Ajax get data
-  $.get("/api/items")
+  $.get("/api/menu")
     .then(data => {
-      renderItems(data);
+      renderItems(data.items);
     });
 };
 
@@ -33,14 +33,35 @@ const renderItems = function(items) {
   }
 };
 const createItemElement = function(item) {
-  return `
+  const element = $(`
   <li class="foodItem" id=${item.id}>${item.name} ${item.price}</li> 
-  `;
+  `);
   
+  element.data("item", item);
+
+  return element;
 };
+
+
 const addToCart = function() {
-  const item = $(this);
+  const element = $(this);
+  const item = element.data("item");
+  const cartItem = { item, count: 1};
+  cart[item.id] = cartItem;
+  // const cartElement = createCartElement(cartItem);
   console.log(item);
   console.log(item.text());
-  $("#cart").append(item);
+  // $("#cart-container").append(cartElement);
+  renderCart();
 };
+
+
+const createCartElement = function(cartItem) {
+  const totalPrice = cartItem.count * cartItem.item.price;
+  const element = $(`
+  <li class="foodItem">${cartItem.name} ${cartItem.count} @ ${cartItem.price} ${totalPrice}</li> 
+  `);
+  element.data("item", cartItem);
+  return element;
+};
+

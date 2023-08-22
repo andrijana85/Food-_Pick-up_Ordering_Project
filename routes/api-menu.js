@@ -9,10 +9,11 @@ const express = require('express');
 const router  = express.Router();
 const db = require('../db/queries/items');
 
-router.get('/:ownerId', (req, res) => {
+//test this route
+router.get('/', (req, res) => {
   //call the itemQueries.getItems(owner_id)
-  const ownerId = req.params.id;
-  db.getItems(ownerId)
+  const ownerId = req.session.ownerId || 1;
+  db.getFoodItemsByOwner(ownerId)
     .then(items => {
       res.json({ items });
     })
@@ -22,6 +23,8 @@ router.get('/:ownerId', (req, res) => {
         .json({ error: err.message });
     });
 });
+
+
 
 
 module.exports = router;

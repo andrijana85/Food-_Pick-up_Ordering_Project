@@ -1,1 +1,9 @@
+<<<<<<< HEAD
 GET http://localhost:8080/api/orders
+=======
+
+GET http://localhost:8080/api/orders
+
+
+
+>>>>>>> 3eecbfa3816d1f2242f94514487271ce42822d76
