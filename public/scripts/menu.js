@@ -25,7 +25,6 @@ const loadItems = function() {
 };
 
 const renderItems = function(items) {
-  console.log("items:", items);
   const container = $("#items-container");
 
   for (const item of items) {
