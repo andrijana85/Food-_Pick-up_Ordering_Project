@@ -6,25 +6,13 @@ const db = require('../db/queries/orders');
 //creates a new order
 router.post('/', (req, res) => {
   // const ownerId = req.session.id;
-  const phoneNumber = req.body.phoneNumber;
-  const total = req.body.total;
+  // const phoneNumber = req.body.phoneNumber;
+  const order = req.body;
   
-<<<<<<< HEAD
-  db.createOrder(ownerId, req.body.order)
-    .then(order => {
-      res.json({ order });
-=======
-  const order = {
-    phoneNumber: phoneNumber,
-    total: total,
-    date: new Date().toISOString()
-  };
-
   //createOrder
   db.createOrder(order)
     .then(createdOrder => {
       res.json({ order: createdOrder});
->>>>>>> 3eecbfa3816d1f2242f94514487271ce42822d76
     })
     .catch(err => {
       res
