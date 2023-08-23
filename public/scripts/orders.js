@@ -13,10 +13,7 @@
 // };
 $(() => {
   alert("Ready");
-  
-  // $itemInput.on("click", addItem);
-  // $("#items-container").on("click",".foodItem", addToCart);
-  // $placeOrder.on("click", placeOrder);
+
   loadOrders();
 });
 
@@ -26,8 +23,8 @@ const loadOrders = function() {
   // TODO: Ajax get data
   $.get("/api/orders")
     .then(data => {
-      renderOrders(data.items);
-      console.log(data.items);
+      renderOrders(data.orders);
+      console.log(data);
     });
 };
 const renderOrders = function(items) {
@@ -37,11 +34,11 @@ const renderOrders = function(items) {
     container.append(element);
   }
 };
-const createOrderElement = function(item) {
-  console.log(item);
+const createOrderElement = function(order) {
+  console.log(order);
   const element = $(`
- <li class="order" id=${item.id}>${item.order_id} $${item.food_item_id} </li> 
+ <li class="order" id=${order.id}>${order.phone_number} - ${order.status} </li> 
   `);
-  element.data("item", item);
+  element.data("order", order);
   return element;
 };

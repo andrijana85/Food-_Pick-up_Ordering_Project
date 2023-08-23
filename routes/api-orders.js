@@ -8,9 +8,10 @@ router.post('/', (req, res) => {
   // const ownerId = req.session.id;
   // const orderData = req.body.order;
   const phoneNumber = req.body.phoneNumber;
+  const orderData = req.body.order;
   const total = req.body.total;
-  console.log(req.body);
   const order = {
+    orderData: orderData,
     phoneNumber: phoneNumber,
     total: total,
     date: new Date().toISOString()
@@ -49,7 +50,7 @@ router.post('/:id', (req, res) => {
 router.get('/', (req, res) => {
   // const ownerId = req.session.userId;
   const ownerId = 1;
-  db.getOrders(ownerId)
+  db.loadOrders(ownerId)
     .then(orders => {
       res.json({ orders });
     })

@@ -1,8 +1,8 @@
 const db = require('../connection');
 
 
-const getOrders = function(ownerId) {
-  return db.query('SELECT * FROM orders WHERE id = $1 ORDER BY date;', [ownerId])
+const getOrders = function() {
+  return db.query('SELECT * FROM orders ORDER BY date;')
     .then((result) => {
       console.log(result.rows);
       return result.rows;
@@ -47,11 +47,11 @@ const updateOrderStatus = (orderId, newStatus) => {
     });
 };
 
-const loadOrders = function(ownerId) {
+const loadOrders = function() {
   return db.query(`SELECT * FROM order_food_items 
   JOIN orders ON orders.id = order_food_items.order_id
   JOIN food_items ON food_items.id = order_food_items.food_item_id 
- ORDER BY date;`, [ownerId])
+ ORDER BY date;`)
     .then((result) => {
       console.log(result.rows);
       return result.rows;

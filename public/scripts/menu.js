@@ -121,11 +121,19 @@ const createCartElement = function(cartItem) {
 };
 
 const placeOrder = function() {
+  //get  the phone number by the user
+  const phoneNumber = $("#phone-input").val();
+  
+  //get the order data from the cart
   const orderData = Object.values(cart);
+  
+  //send the order data and phone number to the server
   $.ajax({
     method: "POST",
     url: "http://localhost:8080/api/orders",
-    data: { order: orderData },
+    data: { order: orderData ,
+      phoneNumber: phoneNumber
+    },
     success: function(response) {
       // Display a success message to the user
       $("#order-summary").html("Order placed successfully!");
