@@ -37,7 +37,9 @@ const renderOrders = function(items) {
 const createOrderElement = function(order) {
   console.log(order);
   const element = $(`
- <li class="order" id=${order.id}>${order.phone_number} - ${order.status} </li> 
+ <li class="order" id=${order.id}>
+ <span class="phone">${order.phone_number}</span> - <span class = "status">${order.status}</span>
+</li> 
   `);
   element.data("order", order);
   return element;

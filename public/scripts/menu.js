@@ -136,7 +136,8 @@ const placeOrder = function() {
     },
     success: function(response) {
       // Display a success message to the user
-      $("#order-summary").html("Order placed successfully!");
+      // $("#order-summary").html("Order placed successfully!");
+      alert("Order placed successfully!");
       cart = {};
       renderCart();
     },
