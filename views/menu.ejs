@@ -12,19 +12,27 @@
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
-
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/menu.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  
 </head>
 
 <body>
-  <h1>Menu 🥔</h1>
+  <h1>Menu</h1>
 
-  <div clas="contenter">
+  <div clas="container">
     <div id="items-container"></div>
+    
+    <!-- <button id="item-input">Add Item</button> -->
     <div id="cart-container"></div>
   </div>
-  <button id="send-order">Place Order</button>
+  <label for="phone-number">Phone Number</label>
+  <input type="text" id="phone-number" name="phone" placeholder="Enter your phone number">
+  <div id="order-summary"></div>
+  <button id="place-order">Place Order</button>
 
 </body>
 

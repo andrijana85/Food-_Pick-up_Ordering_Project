@@ -51,10 +51,10 @@ router.get('/menu', (req, res) => {
 
 router.get('/orders', (req, res) => {
   //check for user cookie , if no cookie go to / page
-  if (!req.session.userId) {
-    res.redirect('/');
-    return;
-  }
+  // if (!req.session.userId) {
+  //   res.redirect('/');
+  //   return;
+  // }
   res.render('orders');
 });
 

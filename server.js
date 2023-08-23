@@ -39,7 +39,6 @@ const ordersApiRoutes = require('./routes/api-orders');
 const pagesRoutes = require('./routes/pages');
 
 
-
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
