@@ -1,16 +1,16 @@
-$image-path: "../images/pizza-time-tasty-homemade-traditional-pizza-italian-recipe.jpg";
-$green: #008c45;
+$bg-img-path: "../images/background-05op.png";
+$green: #006030;
 $red: #cd212a;
 $white: #d2d2d2;
 
 .menu-container {
+  background: url($bg-img-path) no-repeat center center / cover;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   min-height: 100vh;
-  //   background: url("https://images.pexels.com/photos/3581878/pexels-photo-3581878.jpeg")
-  //     no-repeat center center / cover;
+
   padding: 5rem;
 }
 
@@ -42,46 +42,46 @@ $white: #d2d2d2;
   background: {
     image: linear-gradient(
       to right,
-      transparentize($white, 0.4),
-      transparentize($white, 0.4) 5%,
-      $white 5%,
-      $white 10%,
-      transparentize($white, 0.4) 10%,
-      transparentize($white, 0.4) 15%,
-      $white 15%,
-      $white 20%,
-      transparentize($white, 0.4) 20%,
-      transparentize($white, 0.4) 25%,
-      $white 25%,
-      $white 30%,
-      transparentize($white, 0.4) 30%,
-      transparentize($white, 0.4) 35%,
-      $white 35%,
-      $white 40%,
-      transparentize($white, 0.4) 40%,
-      transparentize($white, 0.4) 45%,
-      $white 45%,
-      $white 50%,
-      transparentize($white, 0.4) 50%,
-      transparentize($white, 0.4) 55%,
-      $white 55%,
-      $white 60%,
-      transparentize($white, 0.4) 60%,
-      transparentize($white, 0.4) 65%,
-      $white 65%,
-      $white 70%,
-      transparentize($white, 0.4) 70%,
-      transparentize($white, 0.4) 75%,
-      $white 75%,
-      $white 80%,
-      transparentize($white, 0.4) 80%,
-      transparentize($white, 0.4) 85%,
-      $white 85%,
-      $white 90%,
-      transparentize($white, 0.4) 90%,
-      transparentize($white, 0.4) 95%,
-      $white 95%,
-      $white 100%
+      transparentize($green, 0.4),
+      transparentize($green, 0.4) 5%,
+      $green 5%,
+      $green 10%,
+      transparentize($green, 0.4) 10%,
+      transparentize($green, 0.4) 15%,
+      $green 15%,
+      $green 20%,
+      transparentize($green, 0.4) 20%,
+      transparentize($green, 0.4) 25%,
+      $green 25%,
+      $green 30%,
+      transparentize($green, 0.4) 30%,
+      transparentize($green, 0.4) 35%,
+      $green 35%,
+      $green 40%,
+      transparentize($green, 0.4) 40%,
+      transparentize($green, 0.4) 45%,
+      $green 45%,
+      $green 50%,
+      transparentize($green, 0.4) 50%,
+      transparentize($green, 0.4) 55%,
+      $green 55%,
+      $green 60%,
+      transparentize($green, 0.4) 60%,
+      transparentize($green, 0.4) 65%,
+      $green 65%,
+      $green 70%,
+      transparentize($green, 0.4) 70%,
+      transparentize($green, 0.4) 75%,
+      $green 75%,
+      $green 80%,
+      transparentize($green, 0.4) 80%,
+      transparentize($green, 0.4) 85%,
+      $green 85%,
+      $green 90%,
+      transparentize($green, 0.4) 90%,
+      transparentize($green, 0.4) 95%,
+      $green 95%,
+      $green 100%
     );
     position: 0 0;
     size: 100%;
@@ -98,7 +98,7 @@ $white: #d2d2d2;
   background-color: transparent;
   border: 2px solid $green;
   border-radius: 0.6em;
-  color: $green;
+  color: #fff;
   cursor: pointer;
   display: flex;
   align-self: center;
@@ -115,7 +115,7 @@ $white: #d2d2d2;
 
   &:hover,
   &:focus {
-    color: $red;
+    color: #d2d2d2;
     outline: 0;
   }
 }
