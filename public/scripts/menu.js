@@ -4,21 +4,45 @@ const $placeOrder = $("#place-order");
 let cart = {};
 
 $(() => {
-  alert("Ready");
-  loadItems();
+  // alert("Ready");
+  $("#cart-container").on("click",".remove-item", removeItem);
   $itemInput.on("click", addItem);
   $("#items-container").on("click",".foodItem", addToCart);
   $placeOrder.on("click", placeOrder);
-  // loadItems();
+  loadItems();
 });
 
 const addItem = function() {
-  const name = $itemInput.val();
-  const quantity = $("#quantity-input").val();
-  const item = { id:9, name , quantity, price: 900 };
-  const container = $("#items-container");
-  const element = createItemElement(item);
-  container.append(element);
+  // const name = $itemInput.val();
+  // const quantity = $("#quantity-input").val();
+  // const item = { id:9, name , quantity, price: 900 };
+  // const container = $("#items-container");
+  // const element = createItemElement(item);
+  // container.append(element);
+  const element = $(this);
+  const item = element.data("item");
+  const count = (cart.item.id && cart.item.id.count || 0) + 1;
+  cart.orders.item.id += { item, count };
+  renderCart();
+};
+
+const removeItem = function() {
+  console.log("remove");
+  const element = $(this);
+  console.log(element);
+  const itemId = element[0].attributes.id.nodeType;
+  const cartId = element[0].attributes.id.value;
+  console.log(cart, itemId, cartId);
+  const count = (cart[cartId].count || 0) - 1;
+  // cart.orders[item.id] = { item, count };
+  // !count && delete cart.orders[item.id];
+  console.log(count);
+  if (count <= 0) {
+    delete cart[cartId]; // Remove the item from the cart completely
+  } else {
+    cart[cartId].count = count; // Update the item count
+  }
+  renderCart();
 };
 
 const loadItems = function() {
@@ -28,19 +52,6 @@ const loadItems = function() {
       renderItems(data.items);
     });
 };
-// const loadItems = () => {
-//   $.ajax({
-//     method: 'GET',
-//     url: 'http://localhost:8080/menu',
-//     dataType: 'json',
-//     success: (data) => {
-//       renderItems(data.items);
-//     },
-//     error: (error) => {
-//       console.log("Something went wrong", error);
-//     }
-//   });
-// };
 
 const renderItems = function(items) {
   const container = $("#items-container");
@@ -74,7 +85,8 @@ const renderTotal = function(total) {
 
 const createItemElement = function(item) {
   const element = $(`
-  <img src=${item.image_url} width= 100px> <li class="foodItem" id=${item.id}>${item.name} ${item.price} </li> 
+  <img src=${item.image_url} width = "80px" height = "80px"> 
+  <li class="foodItem" id=${item.id}>${item.name} $${item.price} </li> 
   `);
   element.data("item", item);
   return element;
@@ -85,6 +97,9 @@ const addToCart = function() {
   const element = $(this);
   const item = element.data("item");
   const cartItem = { item, count: 1};
+  if (cart[item.id]) {
+    cartItem.count = cart[item.id].count + 1;
+  }
   cart[item.id] = cartItem;
   // const cartElement = createCartElement(cartItem);
   console.log(item);
@@ -97,12 +112,14 @@ const addToCart = function() {
 const createCartElement = function(cartItem) {
   const totalPrice = cartItem.count * cartItem.item.price;
   console.log(cartItem);
-  const element = $(`
-  <li class="foodItem"> ${JSON.stringify(cartItem.item.name)} ${cartItem.count} @ ${cartItem.item.price} ${totalPrice}</li> 
-  `);
+  const element = $(`<article class="cart-item">
+  <li class="foodItem"> ${cartItem.item.name} ${cartItem.count} @ $${cartItem.item.price} $${totalPrice}</li> 
+  <button class="remove-item" id=${cartItem.item.id}>Remove</button>
+  </article>`);
   element.data("item", cartItem);
   return element;
 };
+
 const placeOrder = function() {
   const orderData = Object.values(cart);
   $.ajax({
