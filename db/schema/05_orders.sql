@@ -6,6 +6,5 @@ CREATE TABLE orders (
   id SERIAL PRIMARY KEY NOT NULL,
   phone_number TEXT,
   date DATE,
-  totalPrice NUMERIC (10, 2),
   status VARCHAR(255)
 );

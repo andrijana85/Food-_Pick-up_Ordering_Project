@@ -1,5 +1,4 @@
-// all the renders go here
-//index, menu, orders
+//This file contains the routes for the pages of the app.
 
 const express = require('express');
 const router  = express.Router();
@@ -51,11 +50,15 @@ router.get('/menu', (req, res) => {
 
 router.get('/orders', (req, res) => {
   //check for user cookie , if no cookie go to / page
-  if (!req.session.userId) {
-    res.redirect('/');
-    return;
-  }
+  // if (!req.session.userId) {
+  //   res.redirect('/');
+  //   return;
+  // }
   res.render('orders');
+});
+
+router.get('/orders/:id', (req, res) => {
+  res.send(`Your order ${req.params.id} has been confirmed`);
 });
 
 module.exports = router;

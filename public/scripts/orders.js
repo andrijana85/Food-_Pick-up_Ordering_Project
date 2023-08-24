@@ -1,24 +1,43 @@
-const loadMenu = () => {
-  $.ajax({
-    method: 'GET',
-    url: 'http://localhost:8080/menu',
-    dataType: 'json',
-    success: (items) => {
-      renderMenu(items);
-    },
-    error: (error) => {
-      console.log("Something went wrong", error);
-    }
-  });
-};
-const renderItems = function(items) {
-  const container = $("#items-container");
+$(() => {
+  loadOrders();
+});
 
-  for (const item of items) {
-    const element = createItemElement(item);
-    container.append(element);
+
+
+const loadOrders = function() {
+  // TODO: Ajax get data
+  $.get("/api/orders")
+    .then(data => {
+      renderOrders(data.orders);
+      console.log(data);
+    });
+};
+
+const createOrderElement = function(order) {
+  console.log(order);
+  const element = $(`
+ <li class="order" id=${order.id}>
+ <span class="phone">${order.phone_number}</span> - <span class = "status">${order.status}</span>
+</li> 
+  `);
+  element.data("order", order);
+  return element;
+};
+
+//not finished yet
+const createOrder = function() {
+  // TODO: Ajax get data
+  $.get("/api/orders/:id")
+    .then(data => {
+      renderOrders(data.orders);
+      console.log(data);
+    });
+};
+
+const renderOrders = function(orders) {
+  const container = $("#order-container");
+  for (const order of orders) {
+    const element = createOrderElement(order);
+    container.prepend(element);
   }
 };
-
-
-loadMenu();

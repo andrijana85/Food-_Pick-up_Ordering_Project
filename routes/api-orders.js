@@ -5,18 +5,18 @@ const db = require('../db/queries/orders');
 
 //creates a new order
 router.post('/', (req, res) => {
-  // const ownerId = req.session.id;
-  const phoneNumber = req.body.phoneNumber;
-  const total = req.body.total;
+  const order = req.body;
   
-  const order = {
-    phoneNumber: phoneNumber,
-    total: total,
-    date: new Date().toISOString()
-  };
+  console.log("order:", order);
+  
+  if (order.items === 0) {
+    return res.status(400).json({ error: 'order is empty' });
+  }
+  const ownerId = 1;
 
+  
   //createOrder
-  db.createOrder(order)
+  db.createOrder(ownerId, order)
     .then(createdOrder => {
       res.json({ order: createdOrder});
     })
@@ -44,10 +44,11 @@ router.post('/:id', (req, res) => {
     });
 });
 
-// this one might work - DONE
+// this one might work
 router.get('/', (req, res) => {
-  const ownerId = req.session.userId;
-  db.getOrders(ownerId)
+  // const ownerId = req.session.userId;
+  const ownerId = 1;
+  db.loadOrders(ownerId)
     .then(orders => {
       res.json({ orders });
     })
@@ -57,5 +58,6 @@ router.get('/', (req, res) => {
         .json({ error: err.message });
     });
 });
+
 
 module.exports = router;
