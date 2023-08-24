@@ -57,4 +57,8 @@ router.get('/orders', (req, res) => {
   res.render('orders');
 });
 
+router.get('/orders/:id', (req, res) => {
+  res.send(`Your order ${req.params.id} has been confirmed`);
+});
+
 module.exports = router;

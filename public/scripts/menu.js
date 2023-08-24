@@ -23,23 +23,23 @@ $(() => {
   // $placeOrder.on("click", placeOrder);
 
   //place the order
-  $placeOrder.on("click", popup);
+  // $placeOrder.on("click", popup);
 
   //confirm order button click event
   $confirmOrder.on("click", placeOrder);
 
   //cancel order button click event
-  $cancelOrder.on("click", function() {
-    $("#popup").modal("hide");
-  });
+  // $cancelOrder.on("click", function() {
+  //   $("#popup").modal("hide");
+  // });
 
   
 });
 
 //popup modal
-const popup = function() {
-  $("#popup").modal({ showClose : false });
-};
+// const popup = function() {
+//   $("#popup").modal({ showClose : false });
+// };
 
 const addItem = function() {
   const element = $(this);
@@ -153,12 +153,16 @@ const placeOrder = function() {
   $.ajax({
     method: "POST",
     url: "http://localhost:8080/api/orders",
-    data: { order: orderData ,
+    data: {
+      order: orderData ,
       phoneNumber: phoneNumber
     },
     success: function(response) {
+      console.log(response);
       cart = {};
       renderCart();
+      $('#exampleModal').modal('hide');
+      window.location.href = `/orders/${response.order.id}`;
     },
     error: function(error) {
       console.log("Error placing order:", error);

@@ -7,18 +7,18 @@ const db = require('../db/queries/orders');
 router.post('/', (req, res) => {
   // const ownerId = req.session.id;
   // const orderData = req.body.order;
-  console.log("this is it",req.body);
-  return res.status(200).send("OK");
+
+  // return res.status(200).send("OK");
   const phoneNumber = req.body.phoneNumber;
   const orderData = req.body.order;
-  const total = req.body.total;
+ 
   const order = {
-    orderData: orderData,
+    items: orderData,
     phoneNumber: phoneNumber,
-    total: total,
     date: new Date().toISOString()
   };
 
+  console.log(order);
   //createOrder
   db.createOrder(order)
     .then(createdOrder => {
