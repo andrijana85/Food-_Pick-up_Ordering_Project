@@ -12,21 +12,32 @@
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/navbar.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <!-- <script defer src="/scripts/index.js"></script> -->
 </head>
 
-<body>
 
-  <div id="cart"></div>
-  <h1>Menu 🥔</h1>
-  <input id="item-input"/>
-  <input id="quantity-input"/>
-  <button type="button" id="testbutton">Add </button>
-  <button id="orderNow">Create Order</button>
-  <div id="items-container"></div>
-  <script defer src="/scripts/menu.js"></script>
+<body>
+  <div>
+    <%- include("./partials/_navbar") %>
+  </div>
+
+  <div class="menu-container">
+    <div class="motto">
+      <h1>Life is better with extra cheese</h1>
+      <h2>
+        Italian cuisine restaurant located in the Little Italy district of Springfield.
+      </h2>
+    </div>
+    <div class="cta">
+      <h2>Craving Adventure? Dive into Our Pizzas Now</h2>
+      <button id="orderNow" class='btn second'>Order Now!</button>
+    </div>
+
+
+  </div>
 </body>
 
 </html>
