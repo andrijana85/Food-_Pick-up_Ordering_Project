@@ -1,19 +1,5 @@
-// const loadMenu = () => {
-//   $.ajax({
-//     method: 'GET',
-//     url: 'http://localhost:8080/menu',
-//     dataType: 'json',
-//     success: (items) => {
-//       renderMenu(items);
-//     },
-//     error: (error) => {
-//       console.log("Something went wrong", error);
-//     }
-//   });
-// };
 $(() => {
   alert("Ready");
-
   loadOrders();
 });
 
@@ -27,13 +13,7 @@ const loadOrders = function() {
       console.log(data);
     });
 };
-const renderOrders = function(items) {
-  const container = $("#order-container");
-  for (const item of items) {
-    const element = createOrderElement(item);
-    container.append(element);
-  }
-};
+
 const createOrderElement = function(order) {
   console.log(order);
   const element = $(`
@@ -43,4 +23,22 @@ const createOrderElement = function(order) {
   `);
   element.data("order", order);
   return element;
+};
+
+//not finished yet
+const createOrder = function() {
+  // TODO: Ajax get data
+  $.get("/api/orders/:id")
+    .then(data => {
+      renderOrders(data.orders);
+      console.log(data);
+    });
+};
+
+const renderOrders = function(orders) {
+  const container = $("#order-container");
+  for (const order of orders) {
+    const element = createOrderElement(order);
+    container.append(element);
+  }
 };

@@ -6,9 +6,6 @@ const getFoodItems = () => {
     .then(data => {
       return data.rows;
     });
-  // .catch((error) => {
-  //   console.log(error.message);
-  // });
 };
 
 //stretch, take ownerId as parametar if we want to add more restaurants
@@ -19,9 +16,6 @@ const getFoodItemsByOwner = function(ownerId) {
       console.log(result.rows);
       return result.rows;
     });
-  // .catch((error) => {
-  //   console.log(error.message);
-  // });
 };
 const addItem = (foodItems) => {
   const queryParams = [foodItems.id,
@@ -36,9 +30,6 @@ const addItem = (foodItems) => {
     .then(data => {
       return data.rows;
     });
-  // .catch((error) => {
-  //   console.log(error.message);
-  // });
 };
 
 
@@ -47,9 +38,6 @@ const deleteItem = (itemId) => {
     .then(() => {
       return;
     });
-  // .catch((error) => {
-  //   console.log(error.message);
-  // });
 };
 
 

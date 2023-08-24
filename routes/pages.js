@@ -1,5 +1,4 @@
-// all the renders go here
-//index, menu, orders
+//This file contains the routes for the pages of the app.
 
 const express = require('express');
 const router  = express.Router();

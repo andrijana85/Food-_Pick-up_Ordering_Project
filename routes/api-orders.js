@@ -7,6 +7,8 @@ const db = require('../db/queries/orders');
 router.post('/', (req, res) => {
   // const ownerId = req.session.id;
   // const orderData = req.body.order;
+  console.log("this is it",req.body);
+  return res.status(200).send("OK");
   const phoneNumber = req.body.phoneNumber;
   const orderData = req.body.order;
   const total = req.body.total;
@@ -46,7 +48,7 @@ router.post('/:id', (req, res) => {
     });
 });
 
-// this one might work - DONE
+// this one might work
 router.get('/', (req, res) => {
   // const ownerId = req.session.userId;
   const ownerId = 1;
@@ -61,18 +63,5 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/', (req, res) => {
-  // const ownerId = req.session.userId;
-  const ownerId = 1;
-  db.getOrders(ownerId)
-    .then(orders => {
-      res.json({ orders });
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
-});
 
 module.exports = router;

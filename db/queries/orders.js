@@ -6,31 +6,26 @@ const getOrders = function() {
     .then((result) => {
       console.log(result.rows);
       return result.rows;
-    })
-    .catch((error) => {
-      console.log(error.message);
     });
 };
 
 const createOrder = (order) => {
-  const queryParams = [order.phoneNumber, order.totalPrice];
+  const queryParams = [order.phoneNumber, order.total];
 
-  const queryStr = `INSERT INTO orders (phone_number, date, totalPrice, status)
-    VALUES ($1, CURRENT_DATE, $2, 'P', ) RETURNING *`;
+  const queryStr = `INSERT INTO orders (phone_number, date, status)
+    VALUES ($1, CURRENT_DATE, 'P') RETURNING *`;
+  console.log(queryParams);
   return db. query(queryStr, queryParams)
     .then(data => {
       const order = data.rows[0];
       return createOrderItems(order.id, order.items);
-    })
-    .catch((error) => {
-      console.log(error.message);
     });
 };
 
 const createOrderItems = function(items) {
-  let queryString = `INSERT INTO  order_food_items (order_id, food_item_id, quantity) VALUES `;
-  ;
-}
+  let queryStr = `INSERT INTO  order_food_items (order_id, food_item_id, quantity)
+   VALUES `;
+};
 
 const updateOrderStatus = (orderId, newStatus) => {
   const queryParams = [newStatus, orderId];
@@ -41,9 +36,6 @@ const updateOrderStatus = (orderId, newStatus) => {
       if (data.rows.length > 0) {
         return data.rows[0];
       }
-    })
-    .catch((error) => {
-      console.log(error.message);
     });
 };
 
@@ -55,9 +47,6 @@ const loadOrders = function() {
     .then((result) => {
       console.log(result.rows);
       return result.rows;
-    })
-    .catch((error) => {
-      console.log(error.message);
     });
 };
-module.exports = { getOrders, createOrder, updateOrderStatus, loadOrders};
+module.exports = { getOrders, createOrder, updateOrderStatus, loadOrders, createOrderItems};
