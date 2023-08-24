@@ -1,4 +1,3 @@
-// const { format$ } = require("morgan");
 const $itemInput = $("#item-input");
 const $placeOrder = $("#place-order");
 const $cartContainer = $("#cart-container");
@@ -13,7 +12,8 @@ $(() => {
   loadItems();
   //remove the item from the cart
   $cartContainer.on("click",".remove-item", removeItem);
-
+  $itemContainer.on("click",".add-item", addToCart);
+  
   //add the item to the cart
   $itemContainer.on("click",".foodItem", addToCart);
 
@@ -51,14 +51,14 @@ const addItem = function() {
 
 //remove the item from the cart
 const removeItem = function() {
-  console.log("remove");
+  // console.log("remove");
   const element = $(this);
-  console.log(element);
+  // console.log(element);
   const itemId = element[0].attributes.id.nodeType;
   const cartId = element[0].attributes.id.value;
-  console.log(cart, itemId, cartId);
+  // console.log(cart, itemId, cartId);
   const count = (cart[cartId].count || 0) - 1;
-  console.log(count);
+  // console.log(count);
 
   if (count <= 0) {
     delete cart[cartId]; // Remove the item from the cart completely
@@ -90,7 +90,7 @@ const renderCart = function() {
   const container = $("#cart-container").empty();
 
   for (const item of Object.values(cart)) {
-    console.log(item);
+    // console.log(item);
     total += item.count * item.item.price;
     const element = createCartElement(item);
     container.append(element);
@@ -112,6 +112,7 @@ const createItemElement = function(item) {
   const element = $(`
   <img src=${item.image_url} width = "80px" height = "80px"> 
   <li class="foodItem" id=${item.id}>${item.name} $${item.price} </li> 
+  <button class="add-item" id=${item.id}>Add</button>
   `);
   element.data("item", item);
   return element;
@@ -125,15 +126,15 @@ const addToCart = function() {
     cartItem.count = cart[item.id].count + 1;
   }
   cart[item.id] = cartItem;
-  console.log(item);
-  console.log(item.name);
+  // console.log(item);
+  // console.log(item.name);
   renderCart();
 };
 
 
 const createCartElement = function(cartItem) {
   const totalPrice = cartItem.count * cartItem.item.price;
-  console.log(cartItem);
+  // console.log(cartItem);
   const element = $(`<article class="cart-item">
   <li class="foodItem"> ${cartItem.item.name} ${cartItem.count} @ $${cartItem.item.price} = $${totalPrice}</li> 
   <button class="remove-item" id=${cartItem.item.id}>Remove</button>
@@ -144,25 +145,28 @@ const createCartElement = function(cartItem) {
 
 const placeOrder = function() {
   //get  the phone number by the user
+  // console.log(cart);
+  
   const phoneNumber = $("#phone-number").val();
+  const items = Object.values(cart);
+  // console.log(items);
+  const data = { phoneNumber, items };
+  console.log(JSON.stringify(data));
   
   //get the order data from the cart
-  const orderData = Object.values(cart);
-  
+  // console.log(cart);
+  cart.phoneNumber = phoneNumber;
   //send the order data and phone number to the server
   $.ajax({
     method: "POST",
-    url: "http://localhost:8080/api/orders",
-    data: {
-      order: orderData ,
-      phoneNumber: phoneNumber
-    },
+    url: "/api/orders",
+    data,
     success: function(response) {
-      console.log(response);
+      // console.log(response);
       cart = {};
       renderCart();
       $('#exampleModal').modal('hide');
-      window.location.href = `/orders/${response.order.id}`;
+      $("#order-complete").modal("show");
     },
     error: function(error) {
       console.log("Error placing order:", error);

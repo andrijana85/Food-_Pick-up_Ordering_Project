@@ -5,22 +5,18 @@ const db = require('../db/queries/orders');
 
 //creates a new order
 router.post('/', (req, res) => {
-  // const ownerId = req.session.id;
-  // const orderData = req.body.order;
+  const order = req.body;
+  
+  console.log("order:", order);
+  
+  if (order.items === 0) {
+    return res.status(400).json({ error: 'order is empty' });
+  }
+  const ownerId = 1;
 
-  // return res.status(200).send("OK");
-  const phoneNumber = req.body.phoneNumber;
-  const orderData = req.body.order;
- 
-  const order = {
-    items: orderData,
-    phoneNumber: phoneNumber,
-    date: new Date().toISOString()
-  };
-
-  console.log(order);
+  
   //createOrder
-  db.createOrder(order)
+  db.createOrder(ownerId, order)
     .then(createdOrder => {
       res.json({ order: createdOrder});
     })
