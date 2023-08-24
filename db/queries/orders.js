@@ -23,15 +23,28 @@ const createOrder = (ownerId, order) => {
     });
 };
 
+//TODO: create a function that creates order items
 const createOrderItems = function(orderId, items) {
   let queryStr = `INSERT INTO  order_food_items (order_id, food_item_id, quantity) VALUES `;
   const queryParams = [];
   
-  for (const cartItem of items) {
+  // for (const cartItem of items) {
+  //   const item = cartItem.item;
+  //   //append more values to the query string
+  //   queryStr += `($1, $${queryParams.length + 2}, $${queryParams.length + 3}), `;
+  // }
+  for (let index = 0; index < items.length; index++) {
+    const cartItem = items[index];
     const item = cartItem.item;
- //append more values to the query string
+    if (index === items.length - 1) {
+      queryStr += `(${index * 3 + 1}, ${index * 3 + 2}, ${index * 3 + 3}) RETURNING *;`;
+    } else {
+      queryStr += `(${index * 3 + 1}, ${index * 3 + 2}, ${index * 3 + 3}), `;
+    }
   }
-
+  //insert 2 items to db,
+  //INSERT INTO  order_food_items (order_id, food_item_id, quantity) VALUES
+  // ($1, $2, $3), ($4, $5, $6) RETURNING *;
   db.query(queryStr, queryParams)
     .then(data => {
       console.log("The food item inserted:",data.rows[0]);
