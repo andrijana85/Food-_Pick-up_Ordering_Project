@@ -1,5 +1,4 @@
 $(() => {
-  alert("Ready");
   loadOrders();
 });
 
@@ -39,6 +38,6 @@ const renderOrders = function(orders) {
   const container = $("#order-container");
   for (const order of orders) {
     const element = createOrderElement(order);
-    container.append(element);
+    container.prepend(element);
   }
 };

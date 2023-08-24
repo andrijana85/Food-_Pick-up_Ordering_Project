@@ -9,7 +9,7 @@ const getOrders = function() {
     });
 };
 
-const createOrder = (order) => {
+const createOrder = (ownerId, order) => {
   const queryParams = [order.phoneNumber];
 
   const queryStr = `INSERT INTO orders (phone_number, date, status)
@@ -19,24 +19,23 @@ const createOrder = (order) => {
     .then(data => {
       const createdOrder = data.rows[0];
       console.log("created order:", createdOrder);
-      if (order.items && order.items.length > 0) {
-        createOrderItems(createdOrder.id, order.items);
-        return createdOrder;
-      }
+      createOrderItems(createdOrder.id, order.items);
     });
 };
 
 const createOrderItems = function(orderId, items) {
-  let queryStr = `INSERT INTO  order_food_items (order_id, food_item_id, quantity)
-   VALUES ($1, $2, $3) RETURNING *`;
-   
-  for (const item of items) {
-    const queryParams = [orderId, item.item.id, item.count];
-    db.query(queryStr, queryParams)
-      .then(data => {
-        console.log("The food item inserted:",data.rows[0]);
-      });
+  let queryStr = `INSERT INTO  order_food_items (order_id, food_item_id, quantity) VALUES `;
+  const queryParams = [];
+  
+  for (const cartItem of items) {
+    const item = cartItem.item;
+ //append more values to the query string
   }
+
+  db.query(queryStr, queryParams)
+    .then(data => {
+      console.log("The food item inserted:",data.rows[0]);
+    });
 };
 
 const updateOrderStatus = (orderId, newStatus) => {
