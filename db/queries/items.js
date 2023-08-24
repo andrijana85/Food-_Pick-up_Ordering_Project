@@ -5,9 +5,6 @@ const getFoodItems = () => {
   return db.query('SELECT * FROM food_items;')
     .then(data => {
       return data.rows;
-    })
-    .catch((error) => {
-      console.log(error.message);
     });
 };
 
@@ -18,9 +15,6 @@ const getFoodItemsByOwner = function(ownerId) {
     .then((result) => {
       console.log(result.rows);
       return result.rows;
-    })
-    .catch((error) => {
-      console.log(error.message);
     });
 };
 const addItem = (foodItems) => {
@@ -35,9 +29,6 @@ const addItem = (foodItems) => {
   return db. query(queryStr, queryParams)
     .then(data => {
       return data.rows;
-    })
-    .catch((error) => {
-      console.log(error.message);
     });
 };
 
@@ -46,9 +37,6 @@ const deleteItem = (itemId) => {
   return db.query('SELECT * FROM food_items WHERE id = $1;',[itemId])
     .then(() => {
       return;
-    })
-    .catch((error) => {
-      console.log(error.message);
     });
 };
 
