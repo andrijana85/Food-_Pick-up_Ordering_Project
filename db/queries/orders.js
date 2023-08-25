@@ -1,11 +1,16 @@
 const db = require('../connection');
 
 
-const getOrders = function() {
+
+
+const getOrders = function (id) {
   return db.query('SELECT * FROM orders ORDER BY date;')
     .then((result) => {
       console.log(result.rows);
       return result.rows;
+    })
+    .catch((error) => {
+      console.log(error.message);
     });
 };
 
@@ -70,7 +75,12 @@ const loadOrders = function() {
  ORDER BY date;`)
     .then((result) => {
       console.log(result.rows);
-      return result.rows;
+      return result.rows[0]; //return the order
+    })
+    .catch((error) => {
+      console.log(error.message);
     });
-};
-module.exports = { getOrders, createOrder, updateOrderStatus, loadOrders, createOrderItems};
+}
+
+
+module.exports = { getOrders, createOrder };
