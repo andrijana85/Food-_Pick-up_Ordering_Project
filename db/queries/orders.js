@@ -14,6 +14,10 @@ const getOrders = function(id) {
     });
 };
 
+//createOrder query's parameter supdated by seeds.sql
+// const createOrder = function (order) {
+//   return db.query(`INSERT INTO orders (phone_number, date, status) VALUES ($1, $2, $3 ) RETURNING *;`, [order.phone_number, order.date, order.status])
+
 const createOrder = (ownerId, order) => {
   const queryParams = [order.phoneNumber];
 

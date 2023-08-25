@@ -27,7 +27,7 @@ app.use(
   })
 );
 app.use(express.static('public'));
-app.use(session({ secret: 'dreamteamkey',resave: false,saveUninitialized: true}));
+app.use(session({ secret: 'dreamteamkey', resave: false, saveUninitialized: true }));
 
 
 // Separated Routes for each Resource
