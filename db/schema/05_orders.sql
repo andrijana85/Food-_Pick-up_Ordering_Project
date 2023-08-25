@@ -4,10 +4,7 @@ DROP TABLE IF EXISTS orders CASCADE;
 
 CREATE TABLE orders (
   id SERIAL PRIMARY KEY NOT NULL,
-  customer_id INTEGER REFERENCES customers(id),
-  business_id INTEGER REFERENCES businesses(id),
+  phone_number TEXT,
   date DATE,
-  total NUMERIC (10, 2),
-  status VARCHAR(255),
-  tax NUMERIC (10, 2)
+  status VARCHAR(255)
 );

@@ -8,23 +8,29 @@ const testdata = [
 
 const cart = [];
 // Client facing scripts here
-$(() => {
-  // alert("Ready");
-  $("#testbutton").on("click", addItem);
-  $("#items-container").on("click",".foodItem", addToCart);
-  loadItems();
+// $(() => {
+//   // alert("Ready");
+//   $("#testbutton").on("click", addItem);
+//   $("#items-container").on("click",".foodItem", addToCart);
+//   loadItems();
+// });
+$(document).ready(function() {
+  alert("Ready");
+  $('#orderNow').click(function() {
+    window.location.href = '/menu'; // Redirect to the /menu page
+  });
 });
-
 const addItem = function() {
   const name = $("#item-input").val();
-  const item = { id:9, name , price: 900};
+  const quantity = $("#quantity-input").val();
+  const item = { id:9, name , quantity, price: 900 };
   const container = $("#items-container");
   const element = createItemElement(item);
   container.append(element);
 };
 const loadItems = function() {
   // TODO: Ajax get data
-  $.get("/api/items")
+  $.get("/api/menu-items")
     .then(data => {
       renderItems(data);
     });

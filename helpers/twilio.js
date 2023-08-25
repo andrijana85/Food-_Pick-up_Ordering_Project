@@ -1,16 +1,16 @@
 const twilioParams = {
-    authToken: process.env.TWILIO_AUTH_TOKEN,
-    accountSid: process.env.TWILIO_ACCOUNT_SID,
-    accountNumber: process.env.TWILIO_ACCOUNT_NUMBER
+  authToken: process.env.TWILIO_AUTH_TOKEN,
+  accountSid: process.env.TWILIO_ACCOUNT_SID,
+  accountNumber: process.env.TWILIO_ACCOUNT_NUMBER
 };
 
 // We need 2 function, one for sending text message and one for sending order confirmation
 const client = require('twilio')(twilioParams.accountSid, twilioParams.authToken);
 
-const sendTextMessage = (messageBody, to) => { // SMS to restaurant
-  //const messageBody = `You have a new order. Order number is ${order.id}.`;
+const sendTextMessage = (message, to) => {
+
   return client.messages.create({
-    body: messageBody, //`You have a new order. Order number is ${order.id}.`
+    body: message,
     from: twilioParams.accountNumber,
     to: to
   })
