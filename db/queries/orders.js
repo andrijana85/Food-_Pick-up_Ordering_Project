@@ -41,21 +41,8 @@ const createOrderItems = function(orderId, items) {
    
     queryStr += `($1, $${queryParams.length }, $${queryParams.length + 1}), `;
   }
-  // for (let index = 0; index < items.length; index++) {
-  //   const cartItem = items[index];
-  //   const item = cartItem.item;
-  //   queryParams.push(item.food_item_id, item.quantity);
-  //   if (index === items.length - 1) {
-  //     queryStr += `(${index * 3 + 1}, ${index * 3 + 2}, ${index * 3 + 3}) RETURNING *;`;
-  //   } else {
-  //     queryStr += `(${index * 3 + 1}, ${index * 3 + 2}, ${index * 3 + 3}), `;
-  //   }
-  // }
   // Remove the trailing comma and space from the queryStr
   queryStr = queryStr.slice(0, -2);
-  //insert 2 items to db,
-  //INSERT INTO  order_food_items (order_id, food_item_id, quantity) VALUES
-  // ($1, $2, $3), ($4, $5, $6) RETURNING *;
   db.query(queryStr, queryParams)
     .then(data => {
       console.log("The food item inserted:",data.rows[0]);
