@@ -14,8 +14,9 @@ const getOrders = function (id) {
     });
 };
 
+//createOrder query's parameter supdated by seeds.sql
 const createOrder = function (order) {
-  return db.query(`INSERT INTO orders (customer_id, business_id, date, status) VALUES ($1, $2, $3, $4 ) RETURNING *;`, [order.customer_id, order.business_id, order.date, order.status])
+  return db.query(`INSERT INTO orders (phone_number, date, status) VALUES ($1, $2, $3 ) RETURNING *;`, [order.phone_number, order.date, order.status])
     .then((result) => {
       console.log(result.rows);
       return result.rows[0]; //return the order

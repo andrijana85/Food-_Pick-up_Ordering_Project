@@ -2,7 +2,7 @@
 
 INSERT INTO orders ( phone_number, date, status)
 VALUES
-    ( '123 456-7890', '2023-08-01', 'Completed' ),
+    ( '5197290185', '2023-08-01', 'Completed' ),
     ( '234 567-8901', '2023-08-02', 'Pending' ),
     ( '345 678-9012', '2023-08-03', 'Completed' ),
     ( '456 789-0123', '2023-08-04', 'Pending' ),

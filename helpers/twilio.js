@@ -15,15 +15,18 @@ const sendTextMessage = (message, to) => {
     to: to
   })
     .then(res => {
+      console.log('##2 Res is ', res);
       return res;
     })
-        .then(res => { return res })
-        .catch(err => console.log(err));
+    .catch(err => {
+      console.log(err)
+      return err;
+    });
 }
 
 
 const sendOrderConfirmation = (order) => { // SMS to customer
-  const messageBody = `Your order is confirmed. Your order number is ${order.id}. It will be ready in ${order.preparation_time} minutes.`;
+  const messageBody = `Your order is confirmed. Your order number is ${order.id}. It will be ready soon.`;
   return client.messages.create({
     body: messageBody,
     from: twilioParams.accountNumber,
