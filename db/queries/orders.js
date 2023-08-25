@@ -3,7 +3,7 @@ const db = require('../connection');
 
 
 
-const getOrders = function (id) {
+const getOrders = function(id) {
   return db.query('SELECT * FROM orders ORDER BY date;')
     .then((result) => {
       console.log(result.rows);
@@ -31,22 +31,28 @@ const createOrder = (ownerId, order) => {
 //TODO: create a function that creates order items
 const createOrderItems = function(orderId, items) {
   let queryStr = `INSERT INTO  order_food_items (order_id, food_item_id, quantity) VALUES `;
-  const queryParams = [];
+  // Initialize with the orderId as the first parameter
+  const queryParams = [orderId];
   
-  // for (const cartItem of items) {
-  //   const item = cartItem.item;
-  //   //append more values to the query string
-  //   queryStr += `($1, $${queryParams.length + 2}, $${queryParams.length + 3}), `;
-  // }
-  for (let index = 0; index < items.length; index++) {
-    const cartItem = items[index];
+  for (const cartItem of items) {
     const item = cartItem.item;
-    if (index === items.length - 1) {
-      queryStr += `(${index * 3 + 1}, ${index * 3 + 2}, ${index * 3 + 3}) RETURNING *;`;
-    } else {
-      queryStr += `(${index * 3 + 1}, ${index * 3 + 2}, ${index * 3 + 3}), `;
-    }
+    // Add the values to the queryParams array
+    queryParams.push(item.food_item_id, item.quantity);
+   
+    queryStr += `($1, $${queryParams.length }, $${queryParams.length + 1}), `;
   }
+  // for (let index = 0; index < items.length; index++) {
+  //   const cartItem = items[index];
+  //   const item = cartItem.item;
+  //   queryParams.push(item.food_item_id, item.quantity);
+  //   if (index === items.length - 1) {
+  //     queryStr += `(${index * 3 + 1}, ${index * 3 + 2}, ${index * 3 + 3}) RETURNING *;`;
+  //   } else {
+  //     queryStr += `(${index * 3 + 1}, ${index * 3 + 2}, ${index * 3 + 3}), `;
+  //   }
+  // }
+  // Remove the trailing comma and space from the queryStr
+  queryStr = queryStr.slice(0, -2);
   //insert 2 items to db,
   //INSERT INTO  order_food_items (order_id, food_item_id, quantity) VALUES
   // ($1, $2, $3), ($4, $5, $6) RETURNING *;
@@ -80,7 +86,7 @@ const loadOrders = function() {
     .catch((error) => {
       console.log(error.message);
     });
-}
+};
 
 
 module.exports = { getOrders, createOrder };
