@@ -10,19 +10,6 @@ const pool = new Pool({
 const db = require('../connection');
 
 
-
-
-const getFoodItems = function(id) {
-  return db.query('SELECT * FROM items')
-    .then((result) => {
-      console.log(result.rows);
-      return result.rows[0];
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
-};
-
 const getUsers = () => {
   return db.query('SELECT * FROM users;')
     .then(data => {
@@ -30,12 +17,4 @@ const getUsers = () => {
     });
 };
 
-
-const getRestaurants = () => {
-  return db.query('SELECT * FROM business')
-  .then(data => {
-    return data.rows;
-  });
-};
-
-module.exports = { getRestaurants, getFoodItems, getUsers };
+module.exports = { getUsers };

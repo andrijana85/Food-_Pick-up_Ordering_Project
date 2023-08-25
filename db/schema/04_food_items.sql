@@ -7,5 +7,5 @@ CREATE TABLE food_items (
   name TEXT NOT NULL,
   description TEXT,
   price DECIMAL(10, 2),
-  business_id INTEGER REFERENCES businesses(id)
+  image_url TEXT
 );
