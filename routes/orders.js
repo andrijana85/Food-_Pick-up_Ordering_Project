@@ -4,21 +4,21 @@ const db = require('../db/queries/orders');
 const { sendTextMessage } = require('../helpers/twilio');
 // TODO: message response from twilio
 
-// router.get('/', (req, res) => {
-//   db.getOrders()
-//     .then(orders => {
-//       res.json(orders);
-//     })
-//     .catch(error => {
-//       console.log(error.message);
-//       res.status(500).json({ err: "internal error" });
-//     });
-// });
+router.get('/', (req, res) => {
+  db.getOrders()
+    .then(orders => {
+      res.json(orders);
+    })
+    .catch(error => {
+      console.log(error.message);
+      res.status(500).json({ err: "internal error" });
+    });
+});
 
 router.post('/', (req, res) => { //create an order
   const newOrder = {
-    customer_id: 1,
-    business_id: 1,
+    // customer_id: 1,
+    // business_id: 1,
     phoneNumber: '5197290185',
     date: new Date().toISOString(),
     status: 'pending'
