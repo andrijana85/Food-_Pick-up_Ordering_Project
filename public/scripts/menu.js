@@ -110,11 +110,9 @@ const renderTotal = function(total) {
 
 const createItemElement = function(item) {
   const element = $(`
-  <div class="menu-item">
-  <img src=${item.image_url} width="80px" height="80px"> 
-  <li class="foodItem" id=${item.id}>${item.name} $${item.price}</li>
-</div>
-<button class="add-item" data-item=${JSON.stringify(item)}>Add to the cart</button>
+  <img src=${item.image_url} width = "80px" height = "80px"> 
+  <li class="foodItem" id=${item.id}>${item.name} $${item.price} </li> 
+  <button class="add-item" id=${item.id}>Add to cart</button>
   `);
   element.data("item", item);
   return element;
