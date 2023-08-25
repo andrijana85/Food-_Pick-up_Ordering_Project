@@ -112,7 +112,7 @@ const createItemElement = function(item) {
   const element = $(`
   <img src=${item.image_url} width = "80px" height = "80px"> 
   <li class="foodItem" id=${item.id}>${item.name} $${item.price} </li> 
-  <button class="add-item" id=${item.id}>Add</button>
+  <button class="add-item" id=${item.id}>Add to the cart</button>
   `);
   element.data("item", item);
   return element;
