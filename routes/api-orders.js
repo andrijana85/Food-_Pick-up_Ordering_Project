@@ -22,7 +22,7 @@ router.post('/', (req, res) => {
   }
 
   //createOrder
-  db.createOrder(ownerId, order)
+  db.createOrder1(ownerId, order)
     .then(createdOrder => {
       console.log('##1 order is ', createdOrder);
       sendTextMessage(`New order from ${orderDetails.phoneNumber} is being processed! Order Date: ${orderDetails.date}, Order Status: ${orderDetails.status}`, orderDetails.phoneNumber)
@@ -60,7 +60,6 @@ router.post('/:id', (req, res) => {
     });
 });
 
-// this one might work
 router.get('/', (req, res) => {
   // const ownerId = req.session.userId;
   const ownerId = 1;

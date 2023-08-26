@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Order Page</title>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Link to the compiled CSS file -->
+  <link rel="stylesheet" href="/styles/orders.css" />
+
+  <!-- Other stylesheet links -->
+  <link rel="stylesheet" href="/styles/navbar.css" />
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+
+  <!-- Script links -->
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/orders.js"></script>
+</head>
+
+<body>
+  <div>
+    <%- include("./partials/_navbar") %>
+  </div>
+
+  <div class="container">
+    <div id="order-container"></div>
+    <ul class="list">
+      <% for (const order of orders) { %>
+        <li class="order" id="<%= order.id %>">
+          <span class="phone">
+            <%= order.phone_number %>
+          </span> - <span class="status">
+            <%= order.status %>
+          </span>
+        </li>
+        <% } %>
+    </ul>
+  </div>
+  <div id="order-summary"></div>
+
+</body>
