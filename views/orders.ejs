@@ -40,9 +40,12 @@
         <li class="order" id="<%= order.id %>">
           <span class="phone">
             <%= order.phone_number %>
-          </span> - <span class="status">
-            <%= order.status %>
           </span>
+          <span class="status">
+            - <%= order.status %>
+          </span>
+          &nbsp
+          <span class="item"> - <%= order.name %></span> 
         </li>
         <% } %>
     </ul>

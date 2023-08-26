@@ -1,8 +1,5 @@
 const db = require('../connection');
 
-
-
-
 const getOrders = function(id) {
   return db.query('SELECT * FROM orders ORDER BY date;')
     .then((result) => {
@@ -19,7 +16,7 @@ const createOrder1 = (ownerId, order) => {
   const queryParams = [order.phoneNumber];
 
   const queryStr = `INSERT INTO orders (phone_number, date, status)
-    VALUES ($1, CURRENT_DATE, 'P') RETURNING *`;
+    VALUES ($1, CURRENT_DATE, 'Pending') RETURNING *`;
   // console.log(queryParams);
   return db.query(queryStr, queryParams)
     .then(data => {
@@ -37,10 +34,11 @@ const createOrderItems = function(orderId, items) {
   
   for (const cartItem of items) {
     const item = cartItem.item;
+    console.log(orderId, item)
     // Add the values to the queryParams array
-    queryParams.push(item.food_item_id, item.quantity);
+    queryParams.push(item.id, cartItem.count);
    
-    queryStr += `($1, $${queryParams.length }, $${queryParams.length + 1}), `;
+    queryStr += `($1, $${queryParams.length - 1 }, $${queryParams.length}), `;
   }
   // Remove the trailing comma and space from the queryStr
   queryStr = queryStr.slice(0, -2);
@@ -63,7 +61,7 @@ const updateOrderStatus = (orderId, newStatus) => {
 };
 
 const loadOrders = function() {
-  return db.query(`SELECT * FROM order_food_items 
+  return db.query(`SELECT * FROM order_food_items
   JOIN orders ON orders.id = order_food_items.order_id
   JOIN food_items ON food_items.id = order_food_items.food_item_id 
  ORDER BY date;`)
