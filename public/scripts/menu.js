@@ -20,26 +20,12 @@ $(() => {
 
   $itemInput.on("click", addItem);
 
-  // $placeOrder.on("click", placeOrder);
-
-  //place the order
-  // $placeOrder.on("click", popup);
 
   //confirm order button click event
   $confirmOrder.on("click", placeOrder);
-
-  //cancel order button click event
-  // $cancelOrder.on("click", function() {
-  //   $("#popup").modal("hide");
-  // });
-
   
 });
 
-//popup modal
-// const popup = function() {
-//   $("#popup").modal({ showClose : false });
-// };
 
 const addItem = function() {
   const element = $(this);
@@ -70,7 +56,6 @@ const removeItem = function() {
 
 //get data from api/menu
 const loadItems = function() {
-  // TODO: Ajax get data
   $.get("/api/menu")
     .then(data => {
       renderItems(data.items);
@@ -110,8 +95,9 @@ const renderTotal = function(total) {
 
 const createItemElement = function(item) {
   const element = $(`
-  <img src=${item.image_url} width = "80px" height = "80px"> 
-  <li class="foodItem" id=${item.id}>${item.name} $${item.price} </li> 
+  <img src=${item.image_url} width = "200px" height = "200px"> 
+  <li class="foodItem" id=${item.id}>${item.name}
+  <br> - ${item.description} - $${item.price} </li> 
   <button class="add-item" id=${item.id}>Add to cart</button>
   `);
   element.data("item", item);
@@ -131,13 +117,13 @@ const addToCart = function() {
   renderCart();
 };
 
-
 const createCartElement = function(cartItem) {
   const totalPrice = cartItem.count * cartItem.item.price;
   // console.log(cartItem);
   const element = $(`<article class="cart-item">
-  <li class="foodItem"> ${cartItem.item.name} ${cartItem.count} @ $${cartItem.item.price} = $${totalPrice}</li> 
+  <li class="foodItem"> ${cartItem.item.name} ${cartItem.count} * $${cartItem.item.price}</li> 
   <button class="remove-item" id=${cartItem.item.id}>Remove</button>
+  <hr class="separator">
   </article>`);
   element.data("item", cartItem);
   return element;

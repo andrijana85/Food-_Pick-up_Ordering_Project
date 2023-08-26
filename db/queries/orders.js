@@ -14,7 +14,8 @@ const getOrders = function(id) {
     });
 };
 
-const createOrder = (ownerId, order) => {
+
+const createOrder1 = (ownerId, order) => {
   const queryParams = [order.phoneNumber];
 
   const queryStr = `INSERT INTO orders (phone_number, date, status)
@@ -76,4 +77,4 @@ const loadOrders = function() {
 };
 
 
-module.exports = { getOrders, createOrder };
+module.exports = { getOrders, createOrder1, updateOrderStatus, loadOrders };
