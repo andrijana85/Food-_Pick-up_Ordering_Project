@@ -24,15 +24,15 @@ const createOrderElement = function(order) {
   return element;
 };
 
-//not finished yet
-const createOrder = function() {
-  // TODO: Ajax get data
-  $.get("/api/orders/:id")
-    .then(data => {
-      renderOrders(data.orders);
-      console.log(data);
-    });
-};
+// //not finished yet
+// const loadOrders = function() {
+//   // TODO: Ajax get data
+//   $.get("/api/orders/:id")
+//     .then(data => {
+//       renderOrders(data.orders);
+//       console.log(data);
+//     });
+// };
 
 const renderOrders = function(orders) {
   const container = $("#order-container");

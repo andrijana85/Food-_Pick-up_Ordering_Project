@@ -1,7 +1,28 @@
 
-h1 {
-    margin-top: 0 
-  }
-  
+.container {
+  margin-top: 10px; 
+}
 
-  
+.list-order {
+  list-style: none;
+  padding: 0;
+}
+
+.order {
+  background-color: #f4f4f4;
+  padding: 10px;
+  margin: 10px 0; 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.order .phone {
+  font-weight: bold;
+  margin-right: 10px; 
+}
+
+.order .status {
+  color: #117964; 
+}

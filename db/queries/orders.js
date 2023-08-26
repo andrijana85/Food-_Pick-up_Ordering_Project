@@ -69,7 +69,7 @@ const loadOrders = function() {
  ORDER BY date;`)
     .then((result) => {
       console.log(result.rows);
-      return result.rows[0]; //return the order
+      return result.rows; //return the order
     })
     .catch((error) => {
       console.log(error.message);
