@@ -62,6 +62,7 @@ router.get('/orders', (req, res) => {
 
   db.loadOrders()
     .then(orders => {
+      console.log(orders)
       res.render('orders', { orders: orders });
     })
     .catch(err => {
