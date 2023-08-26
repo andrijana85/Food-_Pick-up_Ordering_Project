@@ -15,21 +15,21 @@ const getOrders = function(id) {
 };
 
 //createOrder query's parameter supdated by seeds.sql
-// const createOrder = function (order) {
-//   return db.query(`INSERT INTO orders (phone_number, date, status) VALUES ($1, $2, $3 ) RETURNING *;`, [order.phone_number, order.date, order.status])
+const createOrder = function (order) {
+  return db.query(`INSERT INTO orders (phone_number, date, status) VALUES ($1, $2, $3 ) RETURNING *;`, [order.phone_number, order.date, order.status])
 
-const createOrder = (ownerId, order) => {
-  const queryParams = [order.phoneNumber];
+// const createOrder = (ownerId, order) => {
+//   const queryParams = [order.phoneNumber];
 
-  const queryStr = `INSERT INTO orders (phone_number, date, status)
-    VALUES ($1, CURRENT_DATE, 'P') RETURNING *`;
-  // console.log(queryParams);
-  return db.query(queryStr, queryParams)
-    .then(data => {
-      const createdOrder = data.rows[0];
-      console.log("created order:", createdOrder);
-      createOrderItems(createdOrder.id, order.items);
-    });
+//   const queryStr = `INSERT INTO orders (phone_number, date, status)
+//     VALUES ($1, CURRENT_DATE, 'P') RETURNING *`;
+//   // console.log(queryParams);
+//   return db.query(queryStr,queryParams)
+//     .then(data => {
+//       const createdOrder = data.rows[0];
+//       console.log("created order:", createdOrder);
+//       createOrderItems(createdOrder.id, order.items);
+//     });
 };
 
 //TODO: create a function that creates order items
