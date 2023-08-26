@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
 
   
   //createOrder
-  db.createOrder(ownerId, order)
+  db.createOrder1(ownerId, order)
     .then(createdOrder => {
       res.json({ order: createdOrder});
     })
@@ -44,7 +44,6 @@ router.post('/:id', (req, res) => {
     });
 });
 
-// this one might work
 router.get('/', (req, res) => {
   // const ownerId = req.session.userId;
   const ownerId = 1;

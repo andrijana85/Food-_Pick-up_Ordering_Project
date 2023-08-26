@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router  = express.Router();
+const db = require('../db/queries/orders');
 
 router.get('/login/:id', (req, res) => {
   //sets the cookie and redirect to /orders
@@ -48,13 +49,24 @@ router.get('/menu', (req, res) => {
   res.redirect('/menu/1');
 });
 
+// router.get('/orders', (req, res) => {
+//   //check for user cookie , if no cookie go to / page
+//   // if (!req.session.userId) {
+//   //   res.redirect('/');
+//   //   return;
+//   // }
+//   res.render('orders');
+// });
+
 router.get('/orders', (req, res) => {
-  //check for user cookie , if no cookie go to / page
-  // if (!req.session.userId) {
-  //   res.redirect('/');
-  //   return;
-  // }
-  res.render('orders');
+
+  db.loadOrders()
+    .then(orders => {
+      res.render('orders', { orders: orders });
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message });
+    });
 });
 
 router.get('/orders/:id', (req, res) => {

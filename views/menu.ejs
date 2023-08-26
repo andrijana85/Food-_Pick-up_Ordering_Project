@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/menu.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   <!-- <link rel="stylesheet" href="/styles/popup.css" /> -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -28,24 +29,18 @@
 </head>
 
 <body>
-
   <div>
     <%- include("./partials/_navbar") %>
   </div>
-  
-  <h1>Menu</h1>
 
   <div class="container">
     <div id="items-container"></div>
-
-
     <div id="cart-container"></div>
   </div>
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  <button type="button" class="btn btn-primary" style="background-color: rgba(212, 172, 182, 0.846);"data-toggle="modal" data-target="#exampleModal">
     Place Order
   </button>
-
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -65,7 +60,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" id="confirm-order-button" class="btn btn-primary">Confirm</button>
+          <button type="button" id="confirm-order-button" style="background-color: rgba(212, 172, 182, 0.846);"
+            class="btn btn-primary">Confirm</button>
         </div>
       </div>
     </div>
@@ -81,17 +77,15 @@
           </button>
         </div>
         <div class="modal-body">
-          
+
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
+          <button type="button" class="btn btn-secondary" style="background-color: rgba(212, 172, 182, 0.846);"
+            data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
   </div>
-
-
 </body>
 
 </html>
