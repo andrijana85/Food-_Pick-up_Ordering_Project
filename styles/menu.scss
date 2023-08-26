@@ -75,6 +75,13 @@ body {
   align-items: center;
   gap: 10px; 
 }
+.cart-item {
+  font-size: 18px;
+}
+.cart-item-total {
+  font-weight: bold;
+  font-size: 20px;
+}
 
 .menu-item-details {
   flex: 1;

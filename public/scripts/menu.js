@@ -86,7 +86,7 @@ const renderCart = function() {
 };
 
 const createTotalElement = function(total) {
-  return $(`<div class="cart-item"> Total: ${(total)}</div>`);
+  return $(`<div class="cart-item-total"> Total: $${(total)}</div>`);
 };
 
 const renderTotal = function(total) {
@@ -95,7 +95,7 @@ const renderTotal = function(total) {
 
 const createItemElement = function(item) {
   const element = $(`
-  <img src=${item.image_url} width = "200px" height = "200px"> 
+  <img src=${item.image_url} width = "150px" height = "150px"> 
   <li class="foodItem" id=${item.id}>${item.name}
   <br> - ${item.description} - $${item.price} </li> 
   <button class="add-item" id=${item.id}>Add to cart</button>
@@ -121,7 +121,8 @@ const createCartElement = function(cartItem) {
   const totalPrice = cartItem.count * cartItem.item.price;
   // console.log(cartItem);
   const element = $(`<article class="cart-item">
-  <li class="foodItem"> ${cartItem.item.name} ${cartItem.count} * $${cartItem.item.price}</li> 
+  <li class="foodItem"> ${cartItem.item.name} <br>
+  ${cartItem.count} * $${cartItem.item.price}</li> 
   <button class="remove-item" id=${cartItem.item.id}>Remove</button>
   <hr class="separator">
   </article>`);
