@@ -8,6 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 const db = require('../db/connection');
+const { sendTextMessage, sendOrderConfirmation } = require('../helpers/twilio');  // twilio helper functions
 
 router.get('/', (req, res) => {
   const query = `SELECT * FROM widgets`;
